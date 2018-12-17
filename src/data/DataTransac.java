@@ -88,6 +88,7 @@ public class DataTransac {
         } catch (SQLException sqle) {
             Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
         }
+        System.out.println("commit");
         return listeProgrammeurs;
     }
 

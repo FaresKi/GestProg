@@ -11,5 +11,10 @@ package ihm;
  * @author fkissoum
  */
 public class Start {
+    public static void main(String[] args) {
+       
+       
+        
+    }
     
 }
