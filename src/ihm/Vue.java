@@ -7,6 +7,7 @@ package ihm;
 
 import data.DataTransac;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -58,6 +59,8 @@ public class Vue extends javax.swing.JFrame {
         comboBoxEmb = new javax.swing.JComboBox<>();
         année_naissance = new javax.swing.JTextField();
         année_embauche = new javax.swing.JTextField();
+        textBoxMatricule = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuAfficher = new javax.swing.JMenu();
@@ -110,6 +113,7 @@ public class Vue extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Nom");
@@ -163,6 +167,14 @@ public class Vue extends javax.swing.JFrame {
             }
         });
 
+        textBoxMatricule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textBoxMatriculeActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Matricule");
+
         jMenu1.setText("Programmeur");
 
         menuAfficher.setText("Afficher");
@@ -178,6 +190,11 @@ public class Vue extends javax.swing.JFrame {
         jMenu1.add(menuAfficher);
 
         itemModifier.setText("Modifier");
+        itemModifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemModifierActionPerformed(evt);
+            }
+        });
         jMenu1.add(itemModifier);
 
         itemSupprimer.setText("Supprimer");
@@ -189,6 +206,11 @@ public class Vue extends javax.swing.JFrame {
         jMenu1.add(itemSupprimer);
 
         menuItemAjouter.setText("Ajouter");
+        menuItemAjouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAjouterActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuItemAjouter);
 
         jMenuBar1.add(jMenu1);
@@ -257,11 +279,21 @@ public class Vue extends javax.swing.JFrame {
                             .addComponent(année_embauche, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(année_naissance, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(187, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(textBoxMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textBoxMatricule)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(textBoxNom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -334,8 +366,11 @@ public class Vue extends javax.swing.JFrame {
     private void itemToutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemToutActionPerformed
         // TODO add your handling code here:
         JPanel pane = new JPanel();
+        //JFrame frame = new JFrame();
+        //frame.setSize(220, 220);
+        this.setVisible(true);
         JTextArea zoneAffichageProgrammeurs;      
-        zoneAffichageProgrammeurs = new JTextArea(10, 50);
+        zoneAffichageProgrammeurs = new JTextArea(50, 50);
         JScrollPane scroll= new JScrollPane(zoneAffichageProgrammeurs);
         pane.add(scroll);
         this.setVisible(true);
@@ -348,6 +383,7 @@ public class Vue extends javax.swing.JFrame {
         
         if (evt.getSource() == itemTout) {
             DataTransac dt = new DataTransac();
+            this.setContentPane(pane);
             String contenuTextArea;
             contenuTextArea = dt.afficherProgrammeurs();
             zoneAffichageProgrammeurs.setText(contenuTextArea);
@@ -356,6 +392,34 @@ public class Vue extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_itemToutActionPerformed
+
+    private void textBoxMatriculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBoxMatriculeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textBoxMatriculeActionPerformed
+
+    private void itemModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModifierActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==itemModifier)
+        {
+            DataTransac dt = new DataTransac();
+            String nouvelleDateNaiss =année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
+            String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
+            dt.modifierProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText() );        }
+        
+    }//GEN-LAST:event_itemModifierActionPerformed
+
+    private void menuItemAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAjouterActionPerformed
+        if(evt.getSource()== menuItemAjouter)
+        {
+            DataTransac dt = new DataTransac();
+            String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
+            String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
+            dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText() );
+            
+            
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemAjouterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -405,6 +469,7 @@ public class Vue extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -422,6 +487,7 @@ public class Vue extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemAjouter;
     private javax.swing.JTextField textBoxAdresse;
     private javax.swing.JTextField textBoxHobby;
+    private javax.swing.JTextField textBoxMatricule;
     private javax.swing.JTextField textBoxNom;
     private javax.swing.JTextField textBoxPrénom;
     private javax.swing.JTextField textBoxPseudo;

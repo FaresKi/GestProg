@@ -75,14 +75,15 @@ public class DataTransac {
         try {
             while (rs.next()) {
                 prog = new ProgrammeurBean();
+                prog.setMatricule(rs.getInt("MATRICULE"));
                 prog.setPrenom(rs.getString("PRENOM"));
                 prog.setNom(rs.getString("NOM"));
-                prog.setAnNaissance(rs.getString(simpleDateFormat.format("DATE_NAISS")));
-                prog.setAnEmbauche(rs.getString(simpleDateFormat.format("DATE_EMB")));
+                prog.setAdresse(rs.getString("ADRESSE"));
+                prog.setPseudo(rs.getString("PSEUDO"));
                 prog.setHobby(rs.getString("HOBBY"));
                 prog.setResponsable(rs.getString("RESPONSABLE"));
-                prog.setMatricule(rs.getInt("MATRICULE"));
-                prog.setPseudo(rs.getString("PSEUDO"));
+                prog.setAnNaissance(rs.getString("DATE_NAISS"));
+                prog.setAnEmbauche(rs.getString("DATE_EMB"));
                 listeProgrammeurs.add(prog);
             }
         } catch (SQLException sqle) {
@@ -110,13 +111,13 @@ public class DataTransac {
             while (rs.next()) {
                 prog = new ProgrammeurBean();
                   prog = new ProgrammeurBean();
+                 prog.setMatricule(rs.getInt("MATRICULE"));
                 prog.setPrenom(rs.getString("PRENOM"));
                 prog.setNom(rs.getString("NOM"));
                 prog.setAnNaissance(rs.getString("DATE_NAISS"));
                 prog.setAnEmbauche(rs.getString("DATE_EMB"));
                 prog.setHobby(rs.getString("HOBBY"));
                 prog.setResponsable(rs.getString("RESPONSABLE"));
-                prog.setMatricule(rs.getInt("MATRICULE"));
                 prog.setPseudo(rs.getString("PSEUDO"));
                 listeProgrammeurs.add(prog);
             }
@@ -139,6 +140,7 @@ public class DataTransac {
         listeProgrammeurs = this.getProgrammeurs();
         for (ProgrammeurBean progr : listeProgrammeurs) {
             listeProg = listeProg + progr;
+            listeProg=listeProg+"\n";
         }
 
         return listeProg;
@@ -163,6 +165,80 @@ public class DataTransac {
                 Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+    
+    public void modifierProgrammeurs(String matricule, String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo, String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb, String nouvelleAdresse ) {
+        
+        
+        
+        listeProgrammeurs = this.getProgrammeurs();
+        matricule="'"+matricule+"'";
+        nouveauNom="'"+nouveauNom+"'";
+        nouveauPrénom="'"+nouveauPrénom+"'";
+        nouveauHobby="'"+nouveauHobby+"'";
+        nouveauRespo="'"+nouveauRespo+"'";
+        nouvelleDateNaiss="'"+nouvelleDateNaiss+"'";
+        nouvelleDateEmb="'"+nouvelleDateEmb+"'";
+        nouvelleAdresse="'"+nouvelleAdresse+"'";
+        
+        
+        String requete="UPDATE PROGRAMMEUR "
+                + "SET NOM = " + nouveauNom + ", "
+                + "PRENOM = " + nouveauPrénom + ", "
+                + "HOBBY = " + nouveauHobby + ", "
+                + "RESPONSABLE = " + nouveauRespo + ", "
+                + "PSEUDO= " + nouveauPseudo +", "
+                + "DATE_NAISS= " + nouvelleDateNaiss +", "
+                + "DATE_EMB = " + nouvelleDateEmb
+                + "ADRESSE = " + nouvelleAdresse + " "
+                + "WHERE MATRICULE=" + matricule + ";"  ; 
+        try {
+            pstmt = dbConn.prepareStatement(requete);
+            rs = pstmt.executeQuery();
+        }catch(SQLException sqle){
+            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+        }
+        System.out.println("Modifier :" + requete + "\n" );
+            
+        
+        
+        
+        
+    }
+    
+    public void ajouterProgrammeurs(String matricule, String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo, String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb, String adresse) {
+        
+        listeProgrammeurs = this.getProgrammeurs();
+        matricule="'"+matricule+"'";
+        nouveauNom="'"+nouveauNom+"'";
+        nouveauPrénom="'"+nouveauPrénom+"'";
+        nouveauHobby="'"+nouveauHobby+"'";
+        nouveauRespo="'"+nouveauRespo+"'";
+        nouvelleDateNaiss="'"+nouvelleDateNaiss+"'";
+        nouvelleDateEmb="'"+nouvelleDateEmb+"'";
+        adresse="'"+adresse+"'";
+        
+        
+        
+        String requete = "INSERT INTO PROGRAMMEUR VALUES ("
+                + matricule + ","
+                + nouveauNom + ","
+                + nouveauPrénom + ","
+                + adresse + ","
+                + nouveauPseudo + ","
+                + nouveauRespo + ","
+                + nouveauHobby + ","
+                + nouvelleDateNaiss + ","
+                + nouvelleDateEmb + ");"  ;
+        try {
+            pstmt = dbConn.prepareStatement(requete);
+            rs = pstmt.executeQuery();
+        }catch(SQLException sqle){
+            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+        }
+        System.out.println("Ajouter :" + requete + "\n" );
+        
     }
 
 }
