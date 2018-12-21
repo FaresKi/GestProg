@@ -181,6 +181,7 @@ public class DataTransac {
         nouvelleDateNaiss="'"+nouvelleDateNaiss+"'";
         nouvelleDateEmb="'"+nouvelleDateEmb+"'";
         nouvelleAdresse="'"+nouvelleAdresse+"'";
+        nouveauPseudo="'"+nouveauPseudo+"'";
         
         
         String requete="UPDATE PROGRAMMEUR "
@@ -190,12 +191,12 @@ public class DataTransac {
                 + "RESPONSABLE = " + nouveauRespo + ", "
                 + "PSEUDO= " + nouveauPseudo +", "
                 + "DATE_NAISS= " + nouvelleDateNaiss +", "
-                + "DATE_EMB = " + nouvelleDateEmb
+                + "DATE_EMB = " + nouvelleDateEmb + ", "
                 + "ADRESSE = " + nouvelleAdresse + " "
-                + "WHERE MATRICULE=" + matricule + ";"  ; 
+                + "WHERE MATRICULE=" + matricule  ; 
         try {
             pstmt = dbConn.prepareStatement(requete);
-            rs = pstmt.executeQuery();
+            pstmt.execute();
         }catch(SQLException sqle){
             Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
         }
@@ -218,10 +219,11 @@ public class DataTransac {
         nouvelleDateNaiss="'"+nouvelleDateNaiss+"'";
         nouvelleDateEmb="'"+nouvelleDateEmb+"'";
         adresse="'"+adresse+"'";
+        nouveauPseudo="'"+nouveauPseudo+"'";
         
         
         
-        String requete = "INSERT INTO PROGRAMMEUR VALUES ("
+        String requete = "INSERT INTO PROGRAMMEUR (MATRICULE,NOM,PRENOM,ADRESSE,PSEUDO,RESPONSABLE,HOBBY,DATE_NAISS,DATE_EMB) VALUES ("
                 + matricule + ","
                 + nouveauNom + ","
                 + nouveauPrénom + ","
@@ -230,14 +232,28 @@ public class DataTransac {
                 + nouveauRespo + ","
                 + nouveauHobby + ","
                 + nouvelleDateNaiss + ","
-                + nouvelleDateEmb + ");"  ;
+                + nouvelleDateEmb + ")"  ;
         try {
             pstmt = dbConn.prepareStatement(requete);
-            rs = pstmt.executeQuery();
+            pstmt.execute();
         }catch(SQLException sqle){
             Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
         }
         System.out.println("Ajouter :" + requete + "\n" );
+    
+    }
+    
+    public void supprimerProgrammeurs(String matricule){
+        
+        matricule="'"+matricule+"'";
+        String requete  = "DELETE FROM PROGRAMMEUR WHERE MATRICULE = " +matricule;
+        
+        try{
+            pstmt=dbConn.prepareStatement(requete);
+            pstmt.execute();
+        }catch(SQLException sqle){
+            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+        }
         
     }
 
