@@ -8,6 +8,7 @@ package ihm;
 import data.DataTransac;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -190,6 +191,11 @@ public class Vue extends javax.swing.JFrame {
         jLabel10.setText("Matricule");
 
         buttonRechercher.setText("Rechercher");
+        buttonRechercher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRechercherActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Réinitialiser");
 
@@ -501,6 +507,36 @@ public class Vue extends javax.swing.JFrame {
            
        }
     }//GEN-LAST:event_buttonQuitterNonActionPerformed
+
+    private void buttonRechercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRechercherActionPerformed
+
+        // TODO add your handling code here:
+        
+        if(evt.getSource()==buttonRechercher)
+        {
+            DataTransac dt = new DataTransac();
+            ArrayList <String> result=new ArrayList <String> ();
+            
+           result=dt.rechercherProgrammeurs(textBoxMatricule.getText());
+            
+           textBoxNom.setText(result.get(0));
+           textBoxPrénom.setText(result.get(1));
+           textBoxHobby.setText(result.get(5));
+           textBoxRespo.setText(result.get(4));
+           textBoxPseudo.setText(result.get(3));
+           jour_naissance.setText(result.get(6));
+           année_naissance.setText(result.get(8));
+           jour_embauche.setText(result.get(9));
+           année_embauche.setText(result.get(11));
+           comboBoxNaiss.setSelectedItem(result.get(7));
+           comboBoxEmb.setSelectedItem(result.get(10));
+           textBoxAdresse.setText(result.get(2));
+            System.out.println("------------");
+            //System.out.println(nom + " " + prénom + " " + hobby + " " + respo + " ");
+           
+           
+        }
+    }//GEN-LAST:event_buttonRechercherActionPerformed
 
     /**
      * @param args the command line arguments
