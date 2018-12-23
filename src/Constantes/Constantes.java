@@ -15,7 +15,8 @@ public class Constantes {
     public static final String USER = "adm";
     public static final String MDP = "adm";
     public static final String REQUETE_TOUS = "SELECT * from PROGRAMMEUR";
-    public static final String REQUETE_UNIQUE = "SELECT * from PROGRAMMEUR WHERE matricule = ?";
+    public static final String REQUETE_UNIQUE = "SELECT * from PROGRAMMEUR WHERE matricule = ";
+    
     
     
 }

@@ -75,14 +75,15 @@ public class DataTransac {
         try {
             while (rs.next()) {
                 prog = new ProgrammeurBean();
+                prog.setMatricule(rs.getInt("MATRICULE"));
                 prog.setPrenom(rs.getString("PRENOM"));
                 prog.setNom(rs.getString("NOM"));
-                prog.setAnNaissance(rs.getString(simpleDateFormat.format("DATE_NAISS")));
-                prog.setAnEmbauche(rs.getString(simpleDateFormat.format("DATE_EMB")));
+                prog.setAdresse(rs.getString("ADRESSE"));
+                prog.setPseudo(rs.getString("PSEUDO"));
                 prog.setHobby(rs.getString("HOBBY"));
                 prog.setResponsable(rs.getString("RESPONSABLE"));
-                prog.setMatricule(rs.getInt("MATRICULE"));
-                prog.setPseudo(rs.getString("PSEUDO"));
+                prog.setAnNaissance(rs.getString("DATE_NAISS"));
+                prog.setAnEmbauche(rs.getString("DATE_EMB"));
                 listeProgrammeurs.add(prog);
             }
         } catch (SQLException sqle) {
@@ -110,13 +111,13 @@ public class DataTransac {
             while (rs.next()) {
                 prog = new ProgrammeurBean();
                   prog = new ProgrammeurBean();
+                 prog.setMatricule(rs.getInt("MATRICULE"));
                 prog.setPrenom(rs.getString("PRENOM"));
                 prog.setNom(rs.getString("NOM"));
                 prog.setAnNaissance(rs.getString("DATE_NAISS"));
                 prog.setAnEmbauche(rs.getString("DATE_EMB"));
                 prog.setHobby(rs.getString("HOBBY"));
                 prog.setResponsable(rs.getString("RESPONSABLE"));
-                prog.setMatricule(rs.getInt("MATRICULE"));
                 prog.setPseudo(rs.getString("PSEUDO"));
                 listeProgrammeurs.add(prog);
             }
@@ -139,6 +140,7 @@ public class DataTransac {
         listeProgrammeurs = this.getProgrammeurs();
         for (ProgrammeurBean progr : listeProgrammeurs) {
             listeProg = listeProg + progr;
+            listeProg=listeProg+"\n";
         }
 
         return listeProg;
@@ -164,5 +166,165 @@ public class DataTransac {
             }
         }
     }
+    
+    
+    public void modifierProgrammeurs(String matricule, String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo, String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb, String nouvelleAdresse ) {
+        
+        
+        
+        listeProgrammeurs = this.getProgrammeurs();
+        matricule="'"+matricule+"'";
+        nouveauNom="'"+nouveauNom+"'";
+        nouveauPrénom="'"+nouveauPrénom+"'";
+        nouveauHobby="'"+nouveauHobby+"'";
+        nouveauRespo="'"+nouveauRespo+"'";
+        nouvelleDateNaiss="'"+nouvelleDateNaiss+"'";
+        nouvelleDateEmb="'"+nouvelleDateEmb+"'";
+        nouvelleAdresse="'"+nouvelleAdresse+"'";
+        nouveauPseudo="'"+nouveauPseudo+"'";
+        
+        
+        String requete="UPDATE PROGRAMMEUR "
+                + "SET NOM = " + nouveauNom + ", "
+                + "PRENOM = " + nouveauPrénom + ", "
+                + "HOBBY = " + nouveauHobby + ", "
+                + "RESPONSABLE = " + nouveauRespo + ", "
+                + "PSEUDO= " + nouveauPseudo +", "
+                + "DATE_NAISS= " + nouvelleDateNaiss +", "
+                + "DATE_EMB = " + nouvelleDateEmb + ", "
+                + "ADRESSE = " + nouvelleAdresse + " "
+                + "WHERE MATRICULE=" + matricule  ; 
+        try {
+            pstmt = dbConn.prepareStatement(requete);
+            pstmt.execute();
+        }catch(SQLException sqle){
+            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+        }
+        System.out.println("Modifier :" + requete + "\n" );
+            
+        
+        
+        
+        
+    }
+    
+    public void ajouterProgrammeurs(String matricule, String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo, String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb, String adresse) {
+        
+        listeProgrammeurs = this.getProgrammeurs();
+        matricule="'"+matricule+"'";
+        nouveauNom="'"+nouveauNom+"'";
+        nouveauPrénom="'"+nouveauPrénom+"'";
+        nouveauHobby="'"+nouveauHobby+"'";
+        nouveauRespo="'"+nouveauRespo+"'";
+        nouvelleDateNaiss="'"+nouvelleDateNaiss+"'";
+        nouvelleDateEmb="'"+nouvelleDateEmb+"'";
+        adresse="'"+adresse+"'";
+        nouveauPseudo="'"+nouveauPseudo+"'";
+        
+        
+        
+        String requete = "INSERT INTO PROGRAMMEUR (MATRICULE,NOM,PRENOM,ADRESSE,PSEUDO,RESPONSABLE,HOBBY,DATE_NAISS,DATE_EMB) VALUES ("
+                + matricule + ","
+                + nouveauNom + ","
+                + nouveauPrénom + ","
+                + adresse + ","
+                + nouveauPseudo + ","
+                + nouveauRespo + ","
+                + nouveauHobby + ","
+                + nouvelleDateNaiss + ","
+                + nouvelleDateEmb + ")"  ;
+        try {
+            pstmt = dbConn.prepareStatement(requete);
+            pstmt.execute();
+        }catch(SQLException sqle){
+            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+        }
+        System.out.println("Ajouter :" + requete + "\n" );
+    
+    }
+    
+    public void supprimerProgrammeurs(String matricule){
+        
+        matricule="'"+matricule+"'";
+        String requete  = "DELETE FROM PROGRAMMEUR WHERE MATRICULE = " +matricule;
+        
+        try{
+            pstmt=dbConn.prepareStatement(requete);
+            pstmt.execute();
+        }catch(SQLException sqle){
+            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+        }
+        
+    }
+    
+    public ArrayList <String> rechercherProgrammeurs(String matricule)
+    {
+        matricule="'"+matricule+"'";  
+      String requete  = "SELECT * FROM PROGRAMMEUR WHERE MATRICULE = " + matricule;
+      String date_naiss;
+      String date_emb;
+      String nouveauPrénom;
+      String nouveauNom;
+      String nouveauHobby;
+      String nouveauRespo;
+      String nouveauPseudo,adresse,ann_emb,jour_emb,ann_naiss,jour_naiss,mois_naiss,mois_emb;
+      ArrayList <String> result = new ArrayList <String> ();
+      
+    
+      try{
+            pstmt=dbConn.prepareStatement(requete);
+            rs=pstmt.executeQuery();
+            
+                
+            
+            if(rs.next()==true)
+            {
+               nouveauPrénom = rs.getString("PRENOM");
+               nouveauNom= rs.getString("NOM");
+               date_naiss=rs.getString("DATE_NAISS");
+               date_emb=rs.getString("DATE_EMB");
+               nouveauHobby=rs.getString("HOBBY");
+               nouveauRespo=rs.getString("RESPONSABLE");
+               nouveauPseudo=rs.getString("PSEUDO");
+               adresse=rs.getString("ADRESSE");
+
+               ann_emb=date_emb.substring(0,4);
+               jour_emb=date_emb.substring(8);
+               ann_naiss=date_naiss.substring(0, 4);
+               jour_naiss=date_naiss.substring(8);
+               mois_naiss=date_naiss.substring(6,7);
+               mois_emb=date_emb.substring(6,7); 
+               System.out.println(mois_naiss + " " + mois_emb);
+               
+               result.add(nouveauNom); //O
+               result.add(nouveauPrénom); //1
+               result.add(adresse); //2
+               result.add(nouveauPseudo); //3
+               result.add(nouveauRespo); //4
+               result.add(nouveauHobby); //5
+               result.add(jour_naiss); //6
+               result.add(mois_naiss); //7
+               result.add(ann_naiss);//8
+               result.add(jour_emb);//9
+               result.add(mois_emb);//10
+               result.add(ann_emb);//11
+              
+                
+               
+               
+            }
+       
+       
+        
+        
+            
+        }catch(SQLException sqle){
+            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+        } 
+      
+        System.out.println(result.size());
+        return result;
+    }     
+      
 
 }

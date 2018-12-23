@@ -5,6 +5,20 @@
  */
 package ihm;
 
+import data.DataTransac;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author fkissoum
@@ -15,8 +29,12 @@ public class Vue extends javax.swing.JFrame {
      * Creates new form Vue
      */
     public Vue() {
+      
         initComponents();
+        
     }
+    
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,82 +45,651 @@ public class Vue extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dialogQuitter = new javax.swing.JDialog();
+        jLabel9 = new javax.swing.JLabel();
+        buttonQuitterOui = new javax.swing.JButton();
+        buttonQuitterNon = new javax.swing.JButton();
+        dialogProgrammeurPasTrouvé = new javax.swing.JDialog();
+        jLabel11 = new javax.swing.JLabel();
+        buttonOKIntrouvable = new javax.swing.JButton();
+        jDialog1 = new javax.swing.JDialog();
+        jLabel12 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        textBoxNom = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        textBoxAdresse = new javax.swing.JTextField();
+        textBoxRespo = new javax.swing.JTextField();
+        textBoxHobby = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        textBoxPrénom = new javax.swing.JTextField();
+        textBoxPseudo = new javax.swing.JTextField();
+        jour_naissance = new javax.swing.JTextField();
+        jour_embauche = new javax.swing.JTextField();
+        comboBoxNaiss = new javax.swing.JComboBox<>();
+        comboBoxEmb = new javax.swing.JComboBox<>();
+        année_naissance = new javax.swing.JTextField();
+        année_embauche = new javax.swing.JTextField();
+        textBoxMatricule = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        buttonRechercher = new javax.swing.JButton();
+        buttonRéinitialiser = new javax.swing.JButton();
+        buttonValider = new javax.swing.JButton();
+        buttonAnnuler = new javax.swing.JButton();
+        menuBar = new javax.swing.JMenuBar();
+        menuProgrammeur = new javax.swing.JMenu();
+        menuAfficher = new javax.swing.JMenu();
+        itemTout = new javax.swing.JMenuItem();
+        itemModifier = new javax.swing.JMenuItem();
+        itemSupprimer = new javax.swing.JMenuItem();
+        menuItemAjouter = new javax.swing.JMenuItem();
+        menuActions = new javax.swing.JMenu();
+        Quitter = new javax.swing.JMenuItem();
+
+        jLabel9.setText("Vérification");
+
+        buttonQuitterOui.setText("Oui");
+        buttonQuitterOui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonQuitterOuiActionPerformed(evt);
+            }
+        });
+
+        buttonQuitterNon.setText("Non");
+        buttonQuitterNon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonQuitterNonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogQuitterLayout = new javax.swing.GroupLayout(dialogQuitter.getContentPane());
+        dialogQuitter.getContentPane().setLayout(dialogQuitterLayout);
+        dialogQuitterLayout.setHorizontalGroup(
+            dialogQuitterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogQuitterLayout.createSequentialGroup()
+                .addGroup(dialogQuitterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogQuitterLayout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialogQuitterLayout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(buttonQuitterOui)
+                        .addGap(63, 63, 63)
+                        .addComponent(buttonQuitterNon)))
+                .addContainerGap(99, Short.MAX_VALUE))
+        );
+        dialogQuitterLayout.setVerticalGroup(
+            dialogQuitterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogQuitterLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(dialogQuitterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonQuitterOui)
+                    .addComponent(buttonQuitterNon))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+
+        jLabel11.setText("Programmeur introuvable");
+
+        buttonOKIntrouvable.setText("OK");
+        buttonOKIntrouvable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonOKIntrouvableActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogProgrammeurPasTrouvéLayout = new javax.swing.GroupLayout(dialogProgrammeurPasTrouvé.getContentPane());
+        dialogProgrammeurPasTrouvé.getContentPane().setLayout(dialogProgrammeurPasTrouvéLayout);
+        dialogProgrammeurPasTrouvéLayout.setHorizontalGroup(
+            dialogProgrammeurPasTrouvéLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogProgrammeurPasTrouvéLayout.createSequentialGroup()
+                .addGroup(dialogProgrammeurPasTrouvéLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogProgrammeurPasTrouvéLayout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialogProgrammeurPasTrouvéLayout.createSequentialGroup()
+                        .addGap(245, 245, 245)
+                        .addComponent(buttonOKIntrouvable)))
+                .addContainerGap(217, Short.MAX_VALUE))
+        );
+        dialogProgrammeurPasTrouvéLayout.setVerticalGroup(
+            dialogProgrammeurPasTrouvéLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogProgrammeurPasTrouvéLayout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonOKIntrouvable)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+
+        jLabel12.setText("jLabel12");
+
+        jButton1.setText("OK");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jButton1)))
+                .addContainerGap(198, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(jLabel12)
+                .addGap(28, 28, 28)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GestProg");
+        setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Nom");
-        jLabel1.setToolTipText("");
+
+        textBoxNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textBoxNomActionPerformed(evt);
+            }
+        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Adresse");
 
+        textBoxHobby.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textBoxHobbyActionPerformed(evt);
+            }
+        });
+
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Prénom");
+        jLabel3.setText("Responsable");
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Pseudo");
+        jLabel4.setText("Hobby");
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Responsable");
+        jLabel5.setText("Prénom");
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Hobby");
+        jLabel6.setText("Pseudo");
 
-        jLabel7.setText("jLabel7");
+        jLabel7.setText("Date de naissance");
+
+        jLabel8.setText("Date d'embauche");
+
+        comboBoxNaiss.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        comboBoxNaiss.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxNaissActionPerformed(evt);
+            }
+        });
+
+        comboBoxEmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        comboBoxEmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxEmbActionPerformed(evt);
+            }
+        });
+
+        année_naissance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                année_naissanceActionPerformed(evt);
+            }
+        });
+
+        textBoxMatricule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textBoxMatriculeActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Matricule");
+
+        buttonRechercher.setText("Rechercher");
+        buttonRechercher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRechercherActionPerformed(evt);
+            }
+        });
+
+        buttonRéinitialiser.setText("Réinitialiser");
+        buttonRéinitialiser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRéinitialiserActionPerformed(evt);
+            }
+        });
+
+        buttonValider.setText("Valider");
+        buttonValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonValiderActionPerformed(evt);
+            }
+        });
+
+        buttonAnnuler.setText("Annuler");
+
+        menuProgrammeur.setText("Programmeur");
+
+        menuAfficher.setText("Afficher");
+
+        itemTout.setText("Tout");
+        itemTout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemToutActionPerformed(evt);
+            }
+        });
+        menuAfficher.add(itemTout);
+
+        menuProgrammeur.add(menuAfficher);
+
+        itemModifier.setText("Modifier");
+        itemModifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemModifierActionPerformed(evt);
+            }
+        });
+        menuProgrammeur.add(itemModifier);
+
+        itemSupprimer.setText("Supprimer");
+        itemSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSupprimerActionPerformed(evt);
+            }
+        });
+        menuProgrammeur.add(itemSupprimer);
+
+        menuItemAjouter.setText("Ajouter");
+        menuItemAjouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAjouterActionPerformed(evt);
+            }
+        });
+        menuProgrammeur.add(menuItemAjouter);
+
+        menuBar.add(menuProgrammeur);
+
+        menuActions.setText("Actions");
+
+        Quitter.setText("Quitter");
+        Quitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QuitterActionPerformed(evt);
+            }
+        });
+        menuActions.add(Quitter);
+
+        menuBar.add(menuActions);
+
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(textBoxNom)
+                    .addComponent(textBoxAdresse)
+                    .addComponent(textBoxRespo, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(textBoxHobby))
+                .addGap(91, 91, 91)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(281, 281, 281))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textBoxPseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(textBoxPrénom, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(202, 202, 202)
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jour_embauche, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(jour_naissance, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(buttonAnnuler)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(comboBoxNaiss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboBoxEmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(année_embauche, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(année_naissance, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(187, Short.MAX_VALUE))))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(textBoxMatricule, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(buttonRechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(buttonRéinitialiser, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonValider, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(132, 132, 132)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textBoxMatricule)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                    .addComponent(jLabel1)
+                    .addComponent(textBoxNom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(textBoxPrénom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(jLabel2)
+                    .addComponent(textBoxAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(textBoxPseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textBoxRespo, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addComponent(jour_naissance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboBoxNaiss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(année_naissance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(34, 34, 34)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(133, Short.MAX_VALUE))
+                    .addComponent(textBoxHobby, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel8)
+                    .addComponent(jour_embauche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxEmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(année_embauche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonRechercher)
+                    .addComponent(buttonRéinitialiser)
+                    .addComponent(buttonValider)
+                    .addComponent(buttonAnnuler))
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+        
+    private void textBoxNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBoxNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textBoxNomActionPerformed
+
+    private void textBoxHobbyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBoxHobbyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textBoxHobbyActionPerformed
+
+    private void comboBoxNaissActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxNaissActionPerformed
+        // TODO add your handling code here:
+    
+    }//GEN-LAST:event_comboBoxNaissActionPerformed
+
+    private void année_naissanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_année_naissanceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_année_naissanceActionPerformed
+
+    private void itemSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupprimerActionPerformed
+        if(evt.getSource()==itemSupprimer)
+        {
+            //DataTransac dt = new DataTransac();
+            //dt.supprimerProgrammeurs(textBoxMatricule.getText());
+        }
+    }//GEN-LAST:event_itemSupprimerActionPerformed
+
+    private void QuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitterActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==Quitter)
+        {
+            dialogQuitter.setTitle("Voulez-vous vraiment quitter? ");
+            setBounds(10, 10, 600, 300);
+            dialogQuitter.setVisible(true);
+        }
+        
+        
+    }//GEN-LAST:event_QuitterActionPerformed
+
+    private void comboBoxEmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEmbActionPerformed
+        // TODO add your handling code here:
+  
+        
+    }//GEN-LAST:event_comboBoxEmbActionPerformed
+
+    private void itemToutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemToutActionPerformed
+        // TODO add your handling code here:
+        JPanel pane = new JPanel();
+        //JFrame frame = new JFrame();
+        //frame.setSize(220, 220);
+        this.setVisible(true);
+        JTextArea zoneAffichageProgrammeurs;      
+        zoneAffichageProgrammeurs = new JTextArea(50, 50);
+        JScrollPane scroll= new JScrollPane(zoneAffichageProgrammeurs);   
+
+        
+        pane.add(scroll);
+        this.setVisible(true);
+        this.setTitle("GesProg");
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // Fermeture fenêtre = arrêt de l'application 
+        setBounds(10, 10, 600, 300);
+
+        this.add(pane);
+        
+        
+        if (evt.getSource() == itemTout) {
+            DataTransac dt = new DataTransac();
+            this.setContentPane(pane);
+            String contenuTextArea;
+            contenuTextArea = dt.afficherProgrammeurs();
+            zoneAffichageProgrammeurs.setText(contenuTextArea);
+            dt.fermerRessources();
+            
+            
+        }
+    }//GEN-LAST:event_itemToutActionPerformed
+
+    private void textBoxMatriculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBoxMatriculeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textBoxMatriculeActionPerformed
+
+    private void itemModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModifierActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==itemModifier)
+        {
+            
+        }
+        
+    }//GEN-LAST:event_itemModifierActionPerformed
+
+    
+    
+    private void menuItemAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAjouterActionPerformed
+      
+            
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_menuItemAjouterActionPerformed
+
+    private void buttonQuitterOuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonQuitterOuiActionPerformed
+               
+        
+        if(evt.getSource()==buttonQuitterOui)
+            {
+                this.dispose();
+                dialogQuitter.dispose();
+            }
+          
+    }//GEN-LAST:event_buttonQuitterOuiActionPerformed
+
+    private void buttonQuitterNonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonQuitterNonActionPerformed
+       
+        if(evt.getSource()==buttonQuitterNon)
+       {
+           dialogQuitter.dispose();
+           
+       }
+    }//GEN-LAST:event_buttonQuitterNonActionPerformed
+
+    private void buttonRechercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRechercherActionPerformed
+
+        // TODO add your handling code here:
+        
+        if(evt.getSource()==buttonRechercher)
+        {
+            DataTransac dt = new DataTransac();
+            ArrayList <String> result=new ArrayList <String> ();
+            
+           result=dt.rechercherProgrammeurs(textBoxMatricule.getText());
+           if(result.size()==0)
+           {
+               dialogProgrammeurPasTrouvé.setTitle("Erreur");
+               dialogProgrammeurPasTrouvé.setVisible(true);
+               
+           } 
+           
+           textBoxNom.setText(result.get(0));
+           textBoxPrénom.setText(result.get(1));
+           textBoxHobby.setText(result.get(5));
+           textBoxRespo.setText(result.get(4));
+           textBoxPseudo.setText(result.get(3));
+           jour_naissance.setText(result.get(6));
+           année_naissance.setText(result.get(8));
+           jour_embauche.setText(result.get(9));
+           année_embauche.setText(result.get(11));
+           comboBoxNaiss.setSelectedItem(result.get(7));
+           comboBoxEmb.setSelectedItem(result.get(10));
+           textBoxAdresse.setText(result.get(2));
+           
+           
+           
+           
+        }
+    }//GEN-LAST:event_buttonRechercherActionPerformed
+
+    private void buttonOKIntrouvableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOKIntrouvableActionPerformed
+        if(evt.getSource()==buttonOKIntrouvable)
+        {
+            dialogProgrammeurPasTrouvé.dispose();
+        }
+    }//GEN-LAST:event_buttonOKIntrouvableActionPerformed
+
+    private void buttonRéinitialiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRéinitialiserActionPerformed
+        // TODO add your handling code here:
+        textBoxMatricule.setText("");
+        textBoxNom.setText("");
+        textBoxPrénom.setText("");
+        textBoxRespo.setText("");
+        textBoxPseudo.setText("");
+        textBoxHobby.setText("");
+        jour_naissance.setText("");
+        jour_embauche.setText("");
+        année_naissance.setText("");
+        année_embauche.setText("");
+        textBoxAdresse.setText("");
+        comboBoxNaiss.setSelectedIndex(1);
+        comboBoxEmb.setSelectedIndex(1);
+        
+    }//GEN-LAST:event_buttonRéinitialiserActionPerformed
+
+    private void buttonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonValiderActionPerformed
+        // TODO add your handling code here:
+      ActionListener l = (ActionEvent e) -> {
+         if(e.getSource()==menuItemAjouter)
+         {
+             System.out.println("ça marche!");
+             buttonRechercher.setEnabled(false);
+          if (evt.getSource()== buttonValider)
+            {
+                
+            DataTransac dt = new DataTransac();
+            String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
+            String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
+            dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+            
+            }
+         }
+         if(e.getSource()==itemSupprimer)
+         {
+             if(evt.getSource()== buttonValider)
+             {
+           
+            DataTransac dt = new DataTransac();
+            dt.supprimerProgrammeurs(textBoxMatricule.getText());
+             
+             }
+         }
+         if(e.getSource()==itemModifier)
+         {
+             if(evt.getSource()==buttonValider)
+             {
+                 
+            DataTransac dt = new DataTransac();
+            String nouvelleDateNaiss =année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
+            String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();  
+            dt.modifierProgrammeurs(textBoxMatricule.getText(),textBoxNom.getText(),textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+               
+             }
+         }
+          
+     
+      };
+      
+      menuItemAjouter.addActionListener(l);
+      itemSupprimer.addActionListener(l);
+      itemModifier.addActionListener(l);
+      
+      
+        
+        
+      /*
+            
+       */
+       
+    }//GEN-LAST:event_buttonValiderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +720,7 @@ public class Vue extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Vue().setVisible(true);
             }
@@ -140,12 +728,50 @@ public class Vue extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Quitter;
+    private javax.swing.JTextField année_embauche;
+    private javax.swing.JTextField année_naissance;
+    private javax.swing.JButton buttonAnnuler;
+    private javax.swing.JButton buttonOKIntrouvable;
+    private javax.swing.JButton buttonQuitterNon;
+    private javax.swing.JButton buttonQuitterOui;
+    private javax.swing.JButton buttonRechercher;
+    private javax.swing.JButton buttonRéinitialiser;
+    private javax.swing.JButton buttonValider;
+    private javax.swing.JComboBox<String> comboBoxEmb;
+    private javax.swing.JComboBox<String> comboBoxNaiss;
+    private javax.swing.JDialog dialogProgrammeurPasTrouvé;
+    private javax.swing.JDialog dialogQuitter;
+    private javax.swing.JMenuItem itemModifier;
+    private javax.swing.JMenuItem itemSupprimer;
+    private javax.swing.JMenuItem itemTout;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jour_embauche;
+    private javax.swing.JTextField jour_naissance;
+    private javax.swing.JMenu menuActions;
+    private javax.swing.JMenu menuAfficher;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem menuItemAjouter;
+    private javax.swing.JMenu menuProgrammeur;
+    private javax.swing.JTextField textBoxAdresse;
+    private javax.swing.JTextField textBoxHobby;
+    private javax.swing.JTextField textBoxMatricule;
+    private javax.swing.JTextField textBoxNom;
+    private javax.swing.JTextField textBoxPrénom;
+    private javax.swing.JTextField textBoxPseudo;
+    private javax.swing.JTextField textBoxRespo;
     // End of variables declaration//GEN-END:variables
 }

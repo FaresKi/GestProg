@@ -11,5 +11,19 @@ package ihm;
  * @author fkissoum
  */
 public class Start {
+    public static void main(String[] args) {
+       
+        String date_emb = "1998-09-28";
+        
+        String jour = date_emb.substring(8);
+        String annee = date_emb.substring(0, 4);
+        System.out.println("jour :" + jour + "\n" + "année : " + annee);
+        String mois = date_emb.substring(6,7);
+        System.out.println("jour :" + jour + "\n" + "année : " + annee + "\n" + "mois : " + mois);
+        
+
+        
+        
+    }
     
 }
