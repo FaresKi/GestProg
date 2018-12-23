@@ -8,6 +8,8 @@ package ihm;
 import data.DataTransac;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -47,6 +49,12 @@ public class Vue extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         buttonQuitterOui = new javax.swing.JButton();
         buttonQuitterNon = new javax.swing.JButton();
+        dialogProgrammeurPasTrouvé = new javax.swing.JDialog();
+        jLabel11 = new javax.swing.JLabel();
+        buttonOKIntrouvable = new javax.swing.JButton();
+        jDialog1 = new javax.swing.JDialog();
+        jLabel12 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         textBoxNom = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -70,8 +78,8 @@ public class Vue extends javax.swing.JFrame {
         textBoxMatricule = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         buttonRechercher = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        buttonRéinitialiser = new javax.swing.JButton();
+        buttonValider = new javax.swing.JButton();
         buttonAnnuler = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menuProgrammeur = new javax.swing.JMenu();
@@ -127,7 +135,68 @@ public class Vue extends javax.swing.JFrame {
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
+        jLabel11.setText("Programmeur introuvable");
+
+        buttonOKIntrouvable.setText("OK");
+        buttonOKIntrouvable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonOKIntrouvableActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogProgrammeurPasTrouvéLayout = new javax.swing.GroupLayout(dialogProgrammeurPasTrouvé.getContentPane());
+        dialogProgrammeurPasTrouvé.getContentPane().setLayout(dialogProgrammeurPasTrouvéLayout);
+        dialogProgrammeurPasTrouvéLayout.setHorizontalGroup(
+            dialogProgrammeurPasTrouvéLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogProgrammeurPasTrouvéLayout.createSequentialGroup()
+                .addGroup(dialogProgrammeurPasTrouvéLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogProgrammeurPasTrouvéLayout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialogProgrammeurPasTrouvéLayout.createSequentialGroup()
+                        .addGap(245, 245, 245)
+                        .addComponent(buttonOKIntrouvable)))
+                .addContainerGap(217, Short.MAX_VALUE))
+        );
+        dialogProgrammeurPasTrouvéLayout.setVerticalGroup(
+            dialogProgrammeurPasTrouvéLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogProgrammeurPasTrouvéLayout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonOKIntrouvable)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+
+        jLabel12.setText("jLabel12");
+
+        jButton1.setText("OK");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jButton1)))
+                .addContainerGap(198, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(jLabel12)
+                .addGap(28, 28, 28)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GestProg");
         setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -197,9 +266,19 @@ public class Vue extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Réinitialiser");
+        buttonRéinitialiser.setText("Réinitialiser");
+        buttonRéinitialiser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRéinitialiserActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Valider");
+        buttonValider.setText("Valider");
+        buttonValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonValiderActionPerformed(evt);
+            }
+        });
 
         buttonAnnuler.setText("Annuler");
 
@@ -323,9 +402,9 @@ public class Vue extends javax.swing.JFrame {
                         .addGap(156, 156, 156)
                         .addComponent(buttonRechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonRéinitialiser, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonValider, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -367,8 +446,8 @@ public class Vue extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonRechercher)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
+                    .addComponent(buttonRéinitialiser)
+                    .addComponent(buttonValider)
                     .addComponent(buttonAnnuler))
                 .addGap(21, 21, 21))
         );
@@ -376,6 +455,7 @@ public class Vue extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        
     private void textBoxNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBoxNomActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textBoxNomActionPerformed
@@ -396,8 +476,8 @@ public class Vue extends javax.swing.JFrame {
     private void itemSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupprimerActionPerformed
         if(evt.getSource()==itemSupprimer)
         {
-            DataTransac dt = new DataTransac();
-            dt.supprimerProgrammeurs(textBoxMatricule.getText());
+            //DataTransac dt = new DataTransac();
+            //dt.supprimerProgrammeurs(textBoxMatricule.getText());
         }
     }//GEN-LAST:event_itemSupprimerActionPerformed
 
@@ -428,13 +508,7 @@ public class Vue extends javax.swing.JFrame {
         JTextArea zoneAffichageProgrammeurs;      
         zoneAffichageProgrammeurs = new JTextArea(50, 50);
         JScrollPane scroll= new JScrollPane(zoneAffichageProgrammeurs);   
-        /*pane.add(menuProgrammeur);
-        pane.add(menuItemAjouter);
-        pane.add(itemModifier);
-        pane.add(itemSupprimer);
-        pane.add(itemTout);
-        */
-        
+
         
         pane.add(scroll);
         this.setVisible(true);
@@ -465,10 +539,7 @@ public class Vue extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(evt.getSource()==itemModifier)
         {
-            this.setVisible(false);
-            DataTransac dt = new DataTransac();
-            String nouvelleDateNaiss =année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
-            String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
+            
         }
         
     }//GEN-LAST:event_itemModifierActionPerformed
@@ -476,16 +547,11 @@ public class Vue extends javax.swing.JFrame {
     
     
     private void menuItemAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAjouterActionPerformed
-        if(evt.getSource()== menuItemAjouter)
-        {
-            DataTransac dt = new DataTransac();
-            String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
-            String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
-            dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText() );
+      
             
-            
-        }
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_menuItemAjouterActionPerformed
 
     private void buttonQuitterOuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonQuitterOuiActionPerformed
@@ -518,7 +584,13 @@ public class Vue extends javax.swing.JFrame {
             ArrayList <String> result=new ArrayList <String> ();
             
            result=dt.rechercherProgrammeurs(textBoxMatricule.getText());
-            
+           if(result.size()==0)
+           {
+               dialogProgrammeurPasTrouvé.setTitle("Erreur");
+               dialogProgrammeurPasTrouvé.setVisible(true);
+               
+           } 
+           
            textBoxNom.setText(result.get(0));
            textBoxPrénom.setText(result.get(1));
            textBoxHobby.setText(result.get(5));
@@ -531,12 +603,93 @@ public class Vue extends javax.swing.JFrame {
            comboBoxNaiss.setSelectedItem(result.get(7));
            comboBoxEmb.setSelectedItem(result.get(10));
            textBoxAdresse.setText(result.get(2));
-            System.out.println("------------");
-            //System.out.println(nom + " " + prénom + " " + hobby + " " + respo + " ");
+           
+           
            
            
         }
     }//GEN-LAST:event_buttonRechercherActionPerformed
+
+    private void buttonOKIntrouvableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOKIntrouvableActionPerformed
+        if(evt.getSource()==buttonOKIntrouvable)
+        {
+            dialogProgrammeurPasTrouvé.dispose();
+        }
+    }//GEN-LAST:event_buttonOKIntrouvableActionPerformed
+
+    private void buttonRéinitialiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRéinitialiserActionPerformed
+        // TODO add your handling code here:
+        textBoxMatricule.setText("");
+        textBoxNom.setText("");
+        textBoxPrénom.setText("");
+        textBoxRespo.setText("");
+        textBoxPseudo.setText("");
+        textBoxHobby.setText("");
+        jour_naissance.setText("");
+        jour_embauche.setText("");
+        année_naissance.setText("");
+        année_embauche.setText("");
+        textBoxAdresse.setText("");
+        comboBoxNaiss.setSelectedIndex(1);
+        comboBoxEmb.setSelectedIndex(1);
+        
+    }//GEN-LAST:event_buttonRéinitialiserActionPerformed
+
+    private void buttonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonValiderActionPerformed
+        // TODO add your handling code here:
+      ActionListener l = (ActionEvent e) -> {
+         if(e.getSource()==menuItemAjouter)
+         {
+             System.out.println("ça marche!");
+             buttonRechercher.setEnabled(false);
+          if (evt.getSource()== buttonValider)
+            {
+                
+            DataTransac dt = new DataTransac();
+            String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
+            String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
+            dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+            
+            }
+         }
+         if(e.getSource()==itemSupprimer)
+         {
+             if(evt.getSource()== buttonValider)
+             {
+           
+            DataTransac dt = new DataTransac();
+            dt.supprimerProgrammeurs(textBoxMatricule.getText());
+             
+             }
+         }
+         if(e.getSource()==itemModifier)
+         {
+             if(evt.getSource()==buttonValider)
+             {
+                 
+            DataTransac dt = new DataTransac();
+            String nouvelleDateNaiss =année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
+            String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();  
+            dt.modifierProgrammeurs(textBoxMatricule.getText(),textBoxNom.getText(),textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+               
+             }
+         }
+          
+     
+      };
+      
+      menuItemAjouter.addActionListener(l);
+      itemSupprimer.addActionListener(l);
+      itemModifier.addActionListener(l);
+      
+      
+        
+        
+      /*
+            
+       */
+       
+    }//GEN-LAST:event_buttonValiderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -567,6 +720,7 @@ public class Vue extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Vue().setVisible(true);
             }
@@ -578,19 +732,25 @@ public class Vue extends javax.swing.JFrame {
     private javax.swing.JTextField année_embauche;
     private javax.swing.JTextField année_naissance;
     private javax.swing.JButton buttonAnnuler;
+    private javax.swing.JButton buttonOKIntrouvable;
     private javax.swing.JButton buttonQuitterNon;
     private javax.swing.JButton buttonQuitterOui;
     private javax.swing.JButton buttonRechercher;
+    private javax.swing.JButton buttonRéinitialiser;
+    private javax.swing.JButton buttonValider;
     private javax.swing.JComboBox<String> comboBoxEmb;
     private javax.swing.JComboBox<String> comboBoxNaiss;
+    private javax.swing.JDialog dialogProgrammeurPasTrouvé;
     private javax.swing.JDialog dialogQuitter;
     private javax.swing.JMenuItem itemModifier;
     private javax.swing.JMenuItem itemSupprimer;
     private javax.swing.JMenuItem itemTout;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

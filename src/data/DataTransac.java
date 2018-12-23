@@ -256,5 +256,75 @@ public class DataTransac {
         }
         
     }
+    
+    public ArrayList <String> rechercherProgrammeurs(String matricule)
+    {
+        matricule="'"+matricule+"'";  
+      String requete  = "SELECT * FROM PROGRAMMEUR WHERE MATRICULE = " + matricule;
+      String date_naiss;
+      String date_emb;
+      String nouveauPrénom;
+      String nouveauNom;
+      String nouveauHobby;
+      String nouveauRespo;
+      String nouveauPseudo,adresse,ann_emb,jour_emb,ann_naiss,jour_naiss,mois_naiss,mois_emb;
+      ArrayList <String> result = new ArrayList <String> ();
+      
+    
+      try{
+            pstmt=dbConn.prepareStatement(requete);
+            rs=pstmt.executeQuery();
+            
+                
+            
+            if(rs.next()==true)
+            {
+               nouveauPrénom = rs.getString("PRENOM");
+               nouveauNom= rs.getString("NOM");
+               date_naiss=rs.getString("DATE_NAISS");
+               date_emb=rs.getString("DATE_EMB");
+               nouveauHobby=rs.getString("HOBBY");
+               nouveauRespo=rs.getString("RESPONSABLE");
+               nouveauPseudo=rs.getString("PSEUDO");
+               adresse=rs.getString("ADRESSE");
+
+               ann_emb=date_emb.substring(0,4);
+               jour_emb=date_emb.substring(8);
+               ann_naiss=date_naiss.substring(0, 4);
+               jour_naiss=date_naiss.substring(8);
+               mois_naiss=date_naiss.substring(6,7);
+               mois_emb=date_emb.substring(6,7); 
+               System.out.println(mois_naiss + " " + mois_emb);
+               
+               result.add(nouveauNom); //O
+               result.add(nouveauPrénom); //1
+               result.add(adresse); //2
+               result.add(nouveauPseudo); //3
+               result.add(nouveauRespo); //4
+               result.add(nouveauHobby); //5
+               result.add(jour_naiss); //6
+               result.add(mois_naiss); //7
+               result.add(ann_naiss);//8
+               result.add(jour_emb);//9
+               result.add(mois_emb);//10
+               result.add(ann_emb);//11
+              
+                
+               
+               
+            }
+       
+       
+        
+        
+            
+        }catch(SQLException sqle){
+            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+        } 
+      
+        System.out.println(result.size());
+        return result;
+    }     
+      
 
 }
