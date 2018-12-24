@@ -89,7 +89,7 @@ public class DataTransac {
         } catch (SQLException sqle) {
             Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
         }
-        System.out.println("commit");
+        
         return listeProgrammeurs;
     }
 
@@ -168,10 +168,19 @@ public class DataTransac {
     }
     
     
-    public void modifierProgrammeurs(String matricule, String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo, String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb, String nouvelleAdresse ) {
+    public int modifierProgrammeurs(String matricule, String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo, String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb, String nouvelleAdresse ) {
         
         
+        ArrayList<String> result= new ArrayList<>();
+        result=rechercherProgrammeurs(matricule);
         
+        if(result.isEmpty())
+        {
+            return 0;
+        }
+        
+        else
+        {
         listeProgrammeurs = this.getProgrammeurs();
         matricule="'"+matricule+"'";
         nouveauNom="'"+nouveauNom+"'";
@@ -200,16 +209,29 @@ public class DataTransac {
         }catch(SQLException sqle){
             Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
         }
-        System.out.println("Modifier :" + requete + "\n" );
-            
         
         
+        return 1;
+        
+        }
         
         
     }
     
-    public void ajouterProgrammeurs(String matricule, String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo, String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb, String adresse) {
+    public int ajouterProgrammeurs(String matricule, String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo, String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb, String adresse) {
         
+         ArrayList<String> result= new ArrayList<>();
+        result=rechercherProgrammeurs(matricule);
+        
+        if(!result.isEmpty())
+        {
+            return 0;
+        }
+        
+        
+  
+  else
+        {
         listeProgrammeurs = this.getProgrammeurs();
         matricule="'"+matricule+"'";
         nouveauNom="'"+nouveauNom+"'";
@@ -239,14 +261,28 @@ public class DataTransac {
         }catch(SQLException sqle){
             Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
         }
-        System.out.println("Ajouter :" + requete + "\n" );
+        return 1;
+        
+        }
     
     }
     
-    public void supprimerProgrammeurs(String matricule){
+    public int supprimerProgrammeurs(String matricule){
         
+        ArrayList<String> result= new ArrayList<>();
+        result=rechercherProgrammeurs(matricule);
+        System.out.println("Result size : " + result.size());
+        
+        if(result.isEmpty())
+        {
+            return 0;
+        }
+        
+        else
+        {
         matricule="'"+matricule+"'";
         String requete  = "DELETE FROM PROGRAMMEUR WHERE MATRICULE = " +matricule;
+       
         
         try{
             pstmt=dbConn.prepareStatement(requete);
@@ -254,6 +290,11 @@ public class DataTransac {
         }catch(SQLException sqle){
             Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
         }
+        
+            return 1;
+        }
+        
+        
         
     }
     
@@ -294,7 +335,7 @@ public class DataTransac {
                jour_naiss=date_naiss.substring(8);
                mois_naiss=date_naiss.substring(6,7);
                mois_emb=date_emb.substring(6,7); 
-               System.out.println(mois_naiss + " " + mois_emb);
+               
                
                result.add(nouveauNom); //O
                result.add(nouveauPrénom); //1
@@ -308,21 +349,12 @@ public class DataTransac {
                result.add(jour_emb);//9
                result.add(mois_emb);//10
                result.add(ann_emb);//11
-              
-                
-               
                
             }
-       
-       
-        
-        
-            
+     
         }catch(SQLException sqle){
             Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
-        } 
-      
-        System.out.println(result.size());
+        }
         return result;
     }     
       
