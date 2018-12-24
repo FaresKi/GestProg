@@ -52,7 +52,7 @@ public class Vue extends javax.swing.JFrame {
         dialogProgrammeurPasTrouvé = new javax.swing.JDialog();
         jLabel11 = new javax.swing.JLabel();
         buttonOKIntrouvable = new javax.swing.JButton();
-        jDialog1 = new javax.swing.JDialog();
+        Réussi_Echec = new javax.swing.JDialog();
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -168,31 +168,36 @@ public class Vue extends javax.swing.JFrame {
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
-        jLabel12.setText("jLabel12");
+        Réussi_Echec.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        Réussi_Echec.setTitle("Succès");
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Ajout réussi!");
 
         jButton1.setText("OK");
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jButton1)))
-                .addContainerGap(198, Short.MAX_VALUE))
+        javax.swing.GroupLayout Réussi_EchecLayout = new javax.swing.GroupLayout(Réussi_Echec.getContentPane());
+        Réussi_Echec.getContentPane().setLayout(Réussi_EchecLayout);
+        Réussi_EchecLayout.setHorizontalGroup(
+            Réussi_EchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Réussi_EchecLayout.createSequentialGroup()
+                .addGroup(Réussi_EchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Réussi_EchecLayout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Réussi_EchecLayout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
+        Réussi_EchecLayout.setVerticalGroup(
+            Réussi_EchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Réussi_EchecLayout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addComponent(jLabel12)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -474,11 +479,36 @@ public class Vue extends javax.swing.JFrame {
     }//GEN-LAST:event_année_naissanceActionPerformed
 
     private void itemSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupprimerActionPerformed
-        if(evt.getSource()==itemSupprimer)
-        {
-            //DataTransac dt = new DataTransac();
-            //dt.supprimerProgrammeurs(textBoxMatricule.getText());
-        }
+        buttonRechercher.setEnabled(true);
+        ActionListener l = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource()==buttonValider)
+                {
+                    
+                    if(evt.getSource()==itemSupprimer)
+                    {
+                        
+                    DataTransac dt = new DataTransac();
+                    int truc=dt.supprimerProgrammeurs(textBoxMatricule.getText());
+                    if(truc==0)
+                    {
+                        jLabel12.setText("Suppresion échouée");
+                        Réussi_Echec.setTitle("Echec");
+                        
+                    }
+                    else
+                    {
+                        jLabel12.setText("Suppression réussie");
+                        Réussi_Echec.setTitle("Succès");
+                    }
+                    
+                    }
+                }
+            }
+        };
+        
+        buttonValider.addActionListener(l);
     }//GEN-LAST:event_itemSupprimerActionPerformed
 
     private void QuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitterActionPerformed
@@ -537,10 +567,26 @@ public class Vue extends javax.swing.JFrame {
 
     private void itemModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModifierActionPerformed
         // TODO add your handling code here:
-        if(evt.getSource()==itemModifier)
-        {
-            
-        }
+        buttonRechercher.setEnabled(true);
+        ActionListener l = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource()==buttonValider)
+                {
+                    
+                    if(evt.getSource()==itemModifier)
+                    {
+                        
+                    DataTransac dt = new DataTransac();
+                    String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
+                    String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
+                    dt.modifierProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+                    }
+                }
+            }
+        };
+        
+        buttonValider.addActionListener(l);
         
     }//GEN-LAST:event_itemModifierActionPerformed
 
@@ -550,6 +596,41 @@ public class Vue extends javax.swing.JFrame {
       
             
         // TODO add your handling code here:
+        buttonRechercher.setEnabled(false);
+        ActionListener l;
+        l = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource()==buttonValider)
+                {
+                    
+                    if(evt.getSource()==menuItemAjouter)
+                    {
+                        
+                        
+                        DataTransac dt = new DataTransac();
+                        String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
+                        String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
+                        int truc=dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+                        if(truc==1)
+                        {
+                            Réussi_Echec.setVisible(true);
+                            jLabel12.setText("Ajout réussi!");
+                            Réussi_Echec.setTitle("Succès");
+                        }
+                        else
+                        {
+                            Réussi_Echec.setVisible(true);
+                            jLabel12.setText("Ajout échoué!");
+                            Réussi_Echec.setTitle("Echec");
+                        }
+                        
+                    }
+                }
+            }
+        };
+        
+        buttonValider.addActionListener(l);
         
         
     }//GEN-LAST:event_menuItemAjouterActionPerformed
@@ -637,55 +718,57 @@ public class Vue extends javax.swing.JFrame {
 
     private void buttonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonValiderActionPerformed
         // TODO add your handling code here:
-      ActionListener l = (ActionEvent e) -> {
-         if(e.getSource()==menuItemAjouter)
-         {
-             System.out.println("ça marche!");
-             buttonRechercher.setEnabled(false);
-          if (evt.getSource()== buttonValider)
+   /*   ActionListener l;
+        l = (ActionEvent e) -> {
+            if(e.getSource()==menuItemAjouter)
             {
                 
-            DataTransac dt = new DataTransac();
-            String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
-            String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
-            dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
-            
+                System.out.println("ça marche!");
+                buttonRechercher.setEnabled(false);
+                if (evt.getSource()== buttonValider)
+                {
+                    
+                    DataTransac dt = new DataTransac();
+                    String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
+                    String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
+                    dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+                    
+                }
             }
-         }
-         if(e.getSource()==itemSupprimer)
-         {
-             if(evt.getSource()== buttonValider)
-             {
-           
-            DataTransac dt = new DataTransac();
-            dt.supprimerProgrammeurs(textBoxMatricule.getText());
-             
-             }
-         }
-         if(e.getSource()==itemModifier)
-         {
-             if(evt.getSource()==buttonValider)
-             {
-                 
-            DataTransac dt = new DataTransac();
-            String nouvelleDateNaiss =année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
-            String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();  
-            dt.modifierProgrammeurs(textBoxMatricule.getText(),textBoxNom.getText(),textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
-               
-             }
-         }
-          
-     
-      };
-      
+            if(e.getSource()==itemSupprimer)
+            {
+                if(evt.getSource()== buttonValider)
+                {
+                    
+                    DataTransac dt = new DataTransac();
+                    dt.supprimerProgrammeurs(textBoxMatricule.getText());
+                    
+                }
+            }
+            if(e.getSource()==itemModifier)
+            {
+                if(evt.getSource()==buttonValider)
+                {
+                    
+                    DataTransac dt = new DataTransac();
+                    String nouvelleDateNaiss =année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
+                    String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
+                    dt.modifierProgrammeurs(textBoxMatricule.getText(),textBoxNom.getText(),textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+                    
+                }
+            }
+            
+            System.err.println("e.getSource(): "+ System.identityHashCode(e.getSource()));
+        };
+
       menuItemAjouter.addActionListener(l);
       itemSupprimer.addActionListener(l);
       itemModifier.addActionListener(l);
       
       
         
-        
-      /*
+      
+ 
             
        */
        
@@ -729,6 +812,7 @@ public class Vue extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Quitter;
+    private javax.swing.JDialog Réussi_Echec;
     private javax.swing.JTextField année_embauche;
     private javax.swing.JTextField année_naissance;
     private javax.swing.JButton buttonAnnuler;
@@ -746,7 +830,6 @@ public class Vue extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemSupprimer;
     private javax.swing.JMenuItem itemTout;
     private javax.swing.JButton jButton1;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
