@@ -52,9 +52,31 @@ public class Vue extends javax.swing.JFrame {
         dialogProgrammeurPasTrouvé = new javax.swing.JDialog();
         jLabel11 = new javax.swing.JLabel();
         buttonOKIntrouvable = new javax.swing.JButton();
-        Réussi_Echec = new javax.swing.JDialog();
+        ajoutRéussi = new javax.swing.JDialog();
         jLabel12 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        ajoutRéussiOK = new javax.swing.JButton();
+        ajoutEchec = new javax.swing.JDialog();
+        jLabel13 = new javax.swing.JLabel();
+        ajoutEchecOK = new javax.swing.JButton();
+        suppressionRéussie = new javax.swing.JDialog();
+        jLabel14 = new javax.swing.JLabel();
+        suppressionRéussieOK = new javax.swing.JButton();
+        suppressionEchec = new javax.swing.JDialog();
+        jLabel15 = new javax.swing.JLabel();
+        suppressionEchecOK = new javax.swing.JButton();
+        jFrame1 = new javax.swing.JFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        affichageProgrammeurs = new javax.swing.JTextArea();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuProgrammeur_bis = new javax.swing.JMenu();
+        menuAfficher_bis = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        itemModifier_bis = new javax.swing.JMenuItem();
+        itemSupprimer_bis = new javax.swing.JMenuItem();
+        itemAjouter_bis = new javax.swing.JMenuItem();
+        menuActions_bis = new javax.swing.JMenu();
+        Quitter_bis = new javax.swing.JMenuItem();
+        checkbox1 = new java.awt.Checkbox();
         jLabel1 = new javax.swing.JLabel();
         textBoxNom = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -135,6 +157,8 @@ public class Vue extends javax.swing.JFrame {
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
+        dialogProgrammeurPasTrouvé.setMinimumSize(new java.awt.Dimension(558, 195));
+
         jLabel11.setText("Programmeur introuvable");
 
         buttonOKIntrouvable.setText("OK");
@@ -168,41 +192,219 @@ public class Vue extends javax.swing.JFrame {
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
-        Réussi_Echec.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        Réussi_Echec.setTitle("Succès");
+        ajoutRéussi.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        ajoutRéussi.setTitle("Succès");
+        ajoutRéussi.setMinimumSize(new java.awt.Dimension(443, 189));
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Ajout réussi!");
+        jLabel12.setText("Ajout réussi");
 
-        jButton1.setText("OK");
+        ajoutRéussiOK.setText("OK");
+        ajoutRéussiOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajoutRéussiOKActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout Réussi_EchecLayout = new javax.swing.GroupLayout(Réussi_Echec.getContentPane());
-        Réussi_Echec.getContentPane().setLayout(Réussi_EchecLayout);
-        Réussi_EchecLayout.setHorizontalGroup(
-            Réussi_EchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Réussi_EchecLayout.createSequentialGroup()
-                .addGroup(Réussi_EchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Réussi_EchecLayout.createSequentialGroup()
+        javax.swing.GroupLayout ajoutRéussiLayout = new javax.swing.GroupLayout(ajoutRéussi.getContentPane());
+        ajoutRéussi.getContentPane().setLayout(ajoutRéussiLayout);
+        ajoutRéussiLayout.setHorizontalGroup(
+            ajoutRéussiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ajoutRéussiLayout.createSequentialGroup()
+                .addGroup(ajoutRéussiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ajoutRéussiLayout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Réussi_EchecLayout.createSequentialGroup()
+                    .addGroup(ajoutRéussiLayout.createSequentialGroup()
                         .addGap(192, 192, 192)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ajoutRéussiOK, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(160, Short.MAX_VALUE))
         );
-        Réussi_EchecLayout.setVerticalGroup(
-            Réussi_EchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Réussi_EchecLayout.createSequentialGroup()
+        ajoutRéussiLayout.setVerticalGroup(
+            ajoutRéussiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ajoutRéussiLayout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ajoutRéussiOK, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
+
+        ajoutRéussi.getAccessibleContext().setAccessibleName("");
+
+        ajoutEchec.setTitle("Echec");
+        ajoutEchec.setMinimumSize(new java.awt.Dimension(460, 201));
+        ajoutEchec.setResizable(false);
+
+        jLabel13.setText("Ajout échoué");
+
+        ajoutEchecOK.setText("OK");
+        ajoutEchecOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajoutEchecOKActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ajoutEchecLayout = new javax.swing.GroupLayout(ajoutEchec.getContentPane());
+        ajoutEchec.getContentPane().setLayout(ajoutEchecLayout);
+        ajoutEchecLayout.setHorizontalGroup(
+            ajoutEchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ajoutEchecLayout.createSequentialGroup()
+                .addGap(191, 191, 191)
+                .addGroup(ajoutEchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13)
+                    .addGroup(ajoutEchecLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(ajoutEchecOK)))
+                .addContainerGap(194, Short.MAX_VALUE))
+        );
+        ajoutEchecLayout.setVerticalGroup(
+            ajoutEchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ajoutEchecLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ajoutEchecOK)
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
+        suppressionRéussie.setTitle("Echec");
+        suppressionRéussie.setMinimumSize(new java.awt.Dimension(465, 210));
+        suppressionRéussie.setResizable(false);
+
+        jLabel14.setText("Suppression réussie ! ");
+
+        suppressionRéussieOK.setText("OK");
+
+        javax.swing.GroupLayout suppressionRéussieLayout = new javax.swing.GroupLayout(suppressionRéussie.getContentPane());
+        suppressionRéussie.getContentPane().setLayout(suppressionRéussieLayout);
+        suppressionRéussieLayout.setHorizontalGroup(
+            suppressionRéussieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, suppressionRéussieLayout.createSequentialGroup()
+                .addContainerGap(174, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addGap(164, 164, 164))
+            .addGroup(suppressionRéussieLayout.createSequentialGroup()
+                .addGap(205, 205, 205)
+                .addComponent(suppressionRéussieOK)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        suppressionRéussieLayout.setVerticalGroup(
+            suppressionRéussieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, suppressionRéussieLayout.createSequentialGroup()
+                .addContainerGap(99, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(suppressionRéussieOK)
+                .addGap(57, 57, 57))
+        );
+
+        suppressionEchec.setTitle("Echec");
+        suppressionEchec.setMinimumSize(new java.awt.Dimension(470, 197));
+        suppressionEchec.setResizable(false);
+
+        jLabel15.setText("Suppression échouée");
+
+        suppressionEchecOK.setText("OK");
+
+        javax.swing.GroupLayout suppressionEchecLayout = new javax.swing.GroupLayout(suppressionEchec.getContentPane());
+        suppressionEchec.getContentPane().setLayout(suppressionEchecLayout);
+        suppressionEchecLayout.setHorizontalGroup(
+            suppressionEchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(suppressionEchecLayout.createSequentialGroup()
+                .addGap(173, 173, 173)
+                .addComponent(jLabel15)
+                .addContainerGap(175, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, suppressionEchecLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(suppressionEchecOK)
+                .addGap(209, 209, 209))
+        );
+        suppressionEchecLayout.setVerticalGroup(
+            suppressionEchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, suppressionEchecLayout.createSequentialGroup()
+                .addContainerGap(76, Short.MAX_VALUE)
+                .addComponent(jLabel15)
+                .addGap(18, 18, 18)
+                .addComponent(suppressionEchecOK)
+                .addGap(62, 62, 62))
+        );
+
+        jFrame1.setMinimumSize(new java.awt.Dimension(825, 494));
+        jFrame1.setPreferredSize(new java.awt.Dimension(825, 494));
+
+        affichageProgrammeurs.setColumns(20);
+        affichageProgrammeurs.setRows(5);
+        jScrollPane1.setViewportView(affichageProgrammeurs);
+
+        menuProgrammeur_bis.setText("Programmeur");
+
+        menuAfficher_bis.setText("Afficher");
+
+        jMenuItem1.setText("Tout");
+        menuAfficher_bis.add(jMenuItem1);
+
+        menuProgrammeur_bis.add(menuAfficher_bis);
+
+        itemModifier_bis.setText("Modifier");
+        itemModifier_bis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemModifier_bisActionPerformed(evt);
+            }
+        });
+        menuProgrammeur_bis.add(itemModifier_bis);
+
+        itemSupprimer_bis.setText("Supprimer");
+        itemSupprimer_bis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSupprimer_bisActionPerformed(evt);
+            }
+        });
+        menuProgrammeur_bis.add(itemSupprimer_bis);
+
+        itemAjouter_bis.setText("Ajouter");
+        itemAjouter_bis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAjouter_bisActionPerformed(evt);
+            }
+        });
+        menuProgrammeur_bis.add(itemAjouter_bis);
+
+        jMenuBar1.add(menuProgrammeur_bis);
+
+        menuActions_bis.setText("Action");
+
+        Quitter_bis.setText("Quitter");
+        menuActions_bis.add(Quitter_bis);
+
+        jMenuBar1.add(menuActions_bis);
+
+        jFrame1.setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(135, Short.MAX_VALUE))
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(97, Short.MAX_VALUE))
+        );
+
+        checkbox1.setLabel("checkbox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GestProg");
         setBackground(new java.awt.Color(0, 0, 0));
+        setMinimumSize(new java.awt.Dimension(825, 494));
+        setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Nom");
@@ -480,6 +682,7 @@ public class Vue extends javax.swing.JFrame {
 
     private void itemSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupprimerActionPerformed
         buttonRechercher.setEnabled(true);
+        this.setVisible(true);
         ActionListener l = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -493,14 +696,13 @@ public class Vue extends javax.swing.JFrame {
                     int truc=dt.supprimerProgrammeurs(textBoxMatricule.getText());
                     if(truc==0)
                     {
-                        jLabel12.setText("Suppresion échouée");
-                        Réussi_Echec.setTitle("Echec");
+                        suppressionEchec.setVisible(true);
+                        
                         
                     }
                     else
                     {
-                        jLabel12.setText("Suppression réussie");
-                        Réussi_Echec.setTitle("Succès");
+                        suppressionRéussie.setVisible(true);
                     }
                     
                     }
@@ -534,16 +736,25 @@ public class Vue extends javax.swing.JFrame {
         JPanel pane = new JPanel();
         //JFrame frame = new JFrame();
         //frame.setSize(220, 220);
-        this.setVisible(true);
+        if(evt.getSource()== itemTout)
+        {
+        jFrame1.setTitle("GestProg");
+        this.setVisible(false);
+        jFrame1.setVisible(true);
+        DataTransac dt = new DataTransac();
+        affichageProgrammeurs.setText(dt.afficherProgrammeurs());
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // Fermeture fenêtre = arrêt de l'application 
+        
+        }
+        
+        /*this.setVisible(true);
         JTextArea zoneAffichageProgrammeurs;      
         zoneAffichageProgrammeurs = new JTextArea(50, 50);
         JScrollPane scroll= new JScrollPane(zoneAffichageProgrammeurs);   
-
         
         pane.add(scroll);
         this.setVisible(true);
         this.setTitle("GesProg");
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // Fermeture fenêtre = arrêt de l'application 
         setBounds(10, 10, 600, 300);
 
         this.add(pane);
@@ -557,8 +768,8 @@ public class Vue extends javax.swing.JFrame {
             zoneAffichageProgrammeurs.setText(contenuTextArea);
             dt.fermerRessources();
             
-            
         }
+        */
     }//GEN-LAST:event_itemToutActionPerformed
 
     private void textBoxMatriculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBoxMatriculeActionPerformed
@@ -568,6 +779,7 @@ public class Vue extends javax.swing.JFrame {
     private void itemModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModifierActionPerformed
         // TODO add your handling code here:
         buttonRechercher.setEnabled(true);
+         this.setVisible(true);
         ActionListener l = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -597,6 +809,7 @@ public class Vue extends javax.swing.JFrame {
             
         // TODO add your handling code here:
         buttonRechercher.setEnabled(false);
+        
         ActionListener l;
         l = new ActionListener() {
             @Override
@@ -614,15 +827,13 @@ public class Vue extends javax.swing.JFrame {
                         int truc=dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
                         if(truc==1)
                         {
-                            Réussi_Echec.setVisible(true);
+                            ajoutRéussi.setVisible(true);
                             jLabel12.setText("Ajout réussi!");
-                            Réussi_Echec.setTitle("Succès");
+                            ajoutRéussi.setTitle("Succès");
                         }
                         else
                         {
-                            Réussi_Echec.setVisible(true);
-                            jLabel12.setText("Ajout échoué!");
-                            Réussi_Echec.setTitle("Echec");
+                            ajoutEchec.setVisible(true);
                         }
                         
                     }
@@ -717,62 +928,59 @@ public class Vue extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonRéinitialiserActionPerformed
 
     private void buttonValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonValiderActionPerformed
-        // TODO add your handling code here:
-   /*   ActionListener l;
-        l = (ActionEvent e) -> {
-            if(e.getSource()==menuItemAjouter)
-            {
-                
-                System.out.println("ça marche!");
-                buttonRechercher.setEnabled(false);
-                if (evt.getSource()== buttonValider)
-                {
-                    
-                    DataTransac dt = new DataTransac();
-                    String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
-                    String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
-                    dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
-                    
-                }
-            }
-            if(e.getSource()==itemSupprimer)
-            {
-                if(evt.getSource()== buttonValider)
-                {
-                    
-                    DataTransac dt = new DataTransac();
-                    dt.supprimerProgrammeurs(textBoxMatricule.getText());
-                    
-                }
-            }
-            if(e.getSource()==itemModifier)
-            {
-                if(evt.getSource()==buttonValider)
-                {
-                    
-                    DataTransac dt = new DataTransac();
-                    String nouvelleDateNaiss =année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
-                    String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
-                    dt.modifierProgrammeurs(textBoxMatricule.getText(),textBoxNom.getText(),textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
-                    
-                }
-            }
-            
-            System.err.println("e.getSource(): "+ System.identityHashCode(e.getSource()));
-        };
-
-      menuItemAjouter.addActionListener(l);
-      itemSupprimer.addActionListener(l);
-      itemModifier.addActionListener(l);
-      
-      
-        
-      
- 
-            
-       */
+  
        
     }//GEN-LAST:event_buttonValiderActionPerformed
+
+    private void ajoutEchecOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajoutEchecOKActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==ajoutEchecOK)
+        {
+            jFrame1.dispose();
+        }
+        
+    }//GEN-LAST:event_ajoutEchecOKActionPerformed
+
+    private void itemSupprimer_bisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupprimer_bisActionPerformed
+        // TODO add your handling code here:
+         if(evt.getSource()==itemSupprimer_bis)
+        {
+            this.setVisible(true);
+            jFrame1.setVisible(false);
+           // Vue.setDefaultLookAndFeelDecorated(true);
+          
+        }
+    }//GEN-LAST:event_itemSupprimer_bisActionPerformed
+
+    private void itemModifier_bisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModifier_bisActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==itemModifier_bis)
+        {
+            this.setVisible(true);
+            jFrame1.setVisible(false);
+           // Vue.setDefaultLookAndFeelDecorated(true);
+          
+        }
+    }//GEN-LAST:event_itemModifier_bisActionPerformed
+
+    private void itemAjouter_bisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAjouter_bisActionPerformed
+        // TODO add your handling code here:
+         if(evt.getSource()==itemAjouter_bis)
+        {
+            this.setVisible(true);
+            jFrame1.setVisible(false);
+           // Vue.setDefaultLookAndFeelDecorated(true);
+          
+        }
+    }//GEN-LAST:event_itemAjouter_bisActionPerformed
+
+    private void ajoutRéussiOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajoutRéussiOKActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==ajoutRéussiOK)
+        {
+            jFrame1.dispose();
+        }
+    }//GEN-LAST:event_ajoutRéussiOKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -812,7 +1020,12 @@ public class Vue extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Quitter;
-    private javax.swing.JDialog Réussi_Echec;
+    private javax.swing.JMenuItem Quitter_bis;
+    private javax.swing.JTextArea affichageProgrammeurs;
+    private javax.swing.JDialog ajoutEchec;
+    private javax.swing.JButton ajoutEchecOK;
+    private javax.swing.JDialog ajoutRéussi;
+    private javax.swing.JButton ajoutRéussiOK;
     private javax.swing.JTextField année_embauche;
     private javax.swing.JTextField année_naissance;
     private javax.swing.JButton buttonAnnuler;
@@ -822,18 +1035,25 @@ public class Vue extends javax.swing.JFrame {
     private javax.swing.JButton buttonRechercher;
     private javax.swing.JButton buttonRéinitialiser;
     private javax.swing.JButton buttonValider;
+    private java.awt.Checkbox checkbox1;
     private javax.swing.JComboBox<String> comboBoxEmb;
     private javax.swing.JComboBox<String> comboBoxNaiss;
     private javax.swing.JDialog dialogProgrammeurPasTrouvé;
     private javax.swing.JDialog dialogQuitter;
+    private javax.swing.JMenuItem itemAjouter_bis;
     private javax.swing.JMenuItem itemModifier;
+    private javax.swing.JMenuItem itemModifier_bis;
     private javax.swing.JMenuItem itemSupprimer;
+    private javax.swing.JMenuItem itemSupprimer_bis;
     private javax.swing.JMenuItem itemTout;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -842,13 +1062,23 @@ public class Vue extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jour_embauche;
     private javax.swing.JTextField jour_naissance;
     private javax.swing.JMenu menuActions;
+    private javax.swing.JMenu menuActions_bis;
     private javax.swing.JMenu menuAfficher;
+    private javax.swing.JMenu menuAfficher_bis;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuItemAjouter;
     private javax.swing.JMenu menuProgrammeur;
+    private javax.swing.JMenu menuProgrammeur_bis;
+    private javax.swing.JDialog suppressionEchec;
+    private javax.swing.JButton suppressionEchecOK;
+    private javax.swing.JDialog suppressionRéussie;
+    private javax.swing.JButton suppressionRéussieOK;
     private javax.swing.JTextField textBoxAdresse;
     private javax.swing.JTextField textBoxHobby;
     private javax.swing.JTextField textBoxMatricule;
