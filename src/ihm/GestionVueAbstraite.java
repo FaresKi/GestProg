@@ -5,7 +5,7 @@
  */
 package ihm;
 
-import data.DataTransac;
+import data.ActionsBD;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -23,12 +23,12 @@ import javax.swing.JTextField;
  *
  * @author fkissoum
  */
-public class Vue extends javax.swing.JFrame {
+public class GestionVueAbstraite extends javax.swing.JFrame {
 
     /**
      * Creates new form Vue
      */
-    public Vue() {
+    public GestionVueAbstraite() {
       
         initComponents();
         
@@ -331,7 +331,6 @@ public class Vue extends javax.swing.JFrame {
         );
 
         jFrame1.setMinimumSize(new java.awt.Dimension(825, 494));
-        jFrame1.setPreferredSize(new java.awt.Dimension(825, 494));
 
         affichageProgrammeurs.setColumns(20);
         affichageProgrammeurs.setRows(5);
@@ -692,7 +691,7 @@ public class Vue extends javax.swing.JFrame {
                     if(evt.getSource()==itemSupprimer)
                     {
                         
-                    DataTransac dt = new DataTransac();
+                    ActionsBD dt = new ActionsBD();
                     int truc=dt.supprimerProgrammeurs(textBoxMatricule.getText());
                     if(truc==0)
                     {
@@ -741,7 +740,7 @@ public class Vue extends javax.swing.JFrame {
         jFrame1.setTitle("GestProg");
         this.setVisible(false);
         jFrame1.setVisible(true);
-        DataTransac dt = new DataTransac();
+        ActionsBD dt = new ActionsBD();
         affichageProgrammeurs.setText(dt.afficherProgrammeurs());
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Fermeture fenêtre = arrêt de l'application 
         
@@ -761,7 +760,7 @@ public class Vue extends javax.swing.JFrame {
         
         
         if (evt.getSource() == itemTout) {
-            DataTransac dt = new DataTransac();
+            ActionsBD dt = new ActionsBD();
             this.setContentPane(pane);
             String contenuTextArea;
             contenuTextArea = dt.afficherProgrammeurs();
@@ -789,7 +788,7 @@ public class Vue extends javax.swing.JFrame {
                     if(evt.getSource()==itemModifier)
                     {
                         
-                    DataTransac dt = new DataTransac();
+                    ActionsBD dt = new ActionsBD();
                     String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
                     String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
                     dt.modifierProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
@@ -821,7 +820,7 @@ public class Vue extends javax.swing.JFrame {
                     {
                         
                         
-                        DataTransac dt = new DataTransac();
+                        ActionsBD dt = new ActionsBD();
                         String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
                         String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
                         int truc=dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
@@ -872,7 +871,7 @@ public class Vue extends javax.swing.JFrame {
         
         if(evt.getSource()==buttonRechercher)
         {
-            DataTransac dt = new DataTransac();
+            ActionsBD dt = new ActionsBD();
             ArrayList <String> result=new ArrayList <String> ();
             
            result=dt.rechercherProgrammeurs(textBoxMatricule.getText());
@@ -947,7 +946,7 @@ public class Vue extends javax.swing.JFrame {
         {
             this.setVisible(true);
             jFrame1.setVisible(false);
-           // Vue.setDefaultLookAndFeelDecorated(true);
+           // GestionVueAbstraite.setDefaultLookAndFeelDecorated(true);
           
         }
     }//GEN-LAST:event_itemSupprimer_bisActionPerformed
@@ -958,7 +957,7 @@ public class Vue extends javax.swing.JFrame {
         {
             this.setVisible(true);
             jFrame1.setVisible(false);
-           // Vue.setDefaultLookAndFeelDecorated(true);
+           // GestionVueAbstraite.setDefaultLookAndFeelDecorated(true);
           
         }
     }//GEN-LAST:event_itemModifier_bisActionPerformed
@@ -969,7 +968,7 @@ public class Vue extends javax.swing.JFrame {
         {
             this.setVisible(true);
             jFrame1.setVisible(false);
-           // Vue.setDefaultLookAndFeelDecorated(true);
+           // GestionVueAbstraite.setDefaultLookAndFeelDecorated(true);
           
         }
     }//GEN-LAST:event_itemAjouter_bisActionPerformed
@@ -999,21 +998,22 @@ public class Vue extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionVueAbstraite.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionVueAbstraite.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionVueAbstraite.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionVueAbstraite.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Vue().setVisible(true);
+                new GestionVueAbstraite().setVisible(true);
             }
         });
     }

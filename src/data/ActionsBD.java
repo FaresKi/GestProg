@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
  *
  * @author Fares
  */
-public class DataTransac {
+public class ActionsBD {
 
     private Connection dbConn;
     private Statement stmt;
@@ -36,11 +36,11 @@ public class DataTransac {
      * Le constructeur permet d'initialiser la connexion
      *
      */
-    public DataTransac() {
+    public ActionsBD() {
         try {
             dbConn = DriverManager.getConnection(Constantes.URL, Constantes.USER, Constantes.MDP);
         } catch (SQLException sqle) {
-            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+            Logger.getLogger(ActionsBD.class.getName()).log(Level.SEVERE, null, sqle);
         }
 
     }
@@ -57,7 +57,7 @@ public class DataTransac {
             stmt = dbConn.createStatement();
             rs = stmt.executeQuery(req);
         } catch (SQLException sqle) {
-            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+            Logger.getLogger(ActionsBD.class.getName()).log(Level.SEVERE, null, sqle);
         }
         return rs;
     }
@@ -87,7 +87,7 @@ public class DataTransac {
                 listeProgrammeurs.add(prog);
             }
         } catch (SQLException sqle) {
-            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+            Logger.getLogger(ActionsBD.class.getName()).log(Level.SEVERE, null, sqle);
         }
         
         return listeProgrammeurs;
@@ -122,7 +122,7 @@ public class DataTransac {
                 listeProgrammeurs.add(prog);
             }
         } catch (SQLException sqle) {
-            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+            Logger.getLogger(ActionsBD.class.getName()).log(Level.SEVERE, null, sqle);
         }
         return prog;
     }
@@ -162,7 +162,7 @@ public class DataTransac {
                 }
                 dbConn = null;
             } catch (SQLException ex) {
-                Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ActionsBD.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -207,7 +207,7 @@ public class DataTransac {
             pstmt = dbConn.prepareStatement(requete);
             pstmt.execute();
         }catch(SQLException sqle){
-            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+            Logger.getLogger(ActionsBD.class.getName()).log(Level.SEVERE, null, sqle);
         }
         
         
@@ -259,7 +259,7 @@ public class DataTransac {
             pstmt = dbConn.prepareStatement(requete);
             pstmt.execute();
         }catch(SQLException sqle){
-            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+            Logger.getLogger(ActionsBD.class.getName()).log(Level.SEVERE, null, sqle);
         }
         return 1;
         
@@ -288,7 +288,7 @@ public class DataTransac {
             pstmt=dbConn.prepareStatement(requete);
             pstmt.execute();
         }catch(SQLException sqle){
-            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+            Logger.getLogger(ActionsBD.class.getName()).log(Level.SEVERE, null, sqle);
         }
         
             return 1;
@@ -353,7 +353,7 @@ public class DataTransac {
             }
      
         }catch(SQLException sqle){
-            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+            Logger.getLogger(ActionsBD.class.getName()).log(Level.SEVERE, null, sqle);
         }
         return result;
     }     
