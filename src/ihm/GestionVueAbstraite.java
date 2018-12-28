@@ -220,19 +220,19 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
             .addGroup(ajoutRéussiLayout.createSequentialGroup()
                 .addGroup(ajoutRéussiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ajoutRéussiLayout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(162, 162, 162)
+                        .addComponent(ajoutRéussiOK, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ajoutRéussiLayout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addComponent(ajoutRéussiOK, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(160, Short.MAX_VALUE))
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         ajoutRéussiLayout.setVerticalGroup(
             ajoutRéussiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ajoutRéussiLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jLabel12)
-                .addGap(18, 18, 18)
+                .addGap(55, 55, 55)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ajoutRéussiOK, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
@@ -257,22 +257,23 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         ajoutEchecLayout.setHorizontalGroup(
             ajoutEchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ajoutEchecLayout.createSequentialGroup()
-                .addGap(191, 191, 191)
                 .addGroup(ajoutEchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
                     .addGroup(ajoutEchecLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addGap(187, 187, 187)
+                        .addComponent(jLabel13))
+                    .addGroup(ajoutEchecLayout.createSequentialGroup()
+                        .addGap(197, 197, 197)
                         .addComponent(ajoutEchecOK)))
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         ajoutEchecLayout.setVerticalGroup(
             ajoutEchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ajoutEchecLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addGap(49, 49, 49)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ajoutEchecOK)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         suppressionRéussie.setTitle("Echec");
@@ -695,6 +696,18 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
     private void itemSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupprimerActionPerformed
         buttonRechercher.setEnabled(false);
         buttonRéinitialiser.setEnabled(false);
+        textBoxNom.setEditable(false);
+        textBoxPrénom.setEditable(false);
+        textBoxRespo.setEditable(false);
+        textBoxPseudo.setEditable(false);
+        textBoxHobby.setEditable(false);
+        textBoxAdresse.setEditable(false);
+        jour_naissance.setEditable(false);
+        jour_embauche.setEditable(false);
+        année_naissance.setEditable(false);
+        année_embauche.setEditable(false);
+        comboBoxNaiss.setEditable(false);
+        comboBoxEmb.setEditable(false);
         this.setVisible(true);
         ActionListener l = new ActionListener() {
             @Override
@@ -703,7 +716,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
                 {
                     
                     if(evt.getSource()==itemSupprimer || evt.getSource()==itemSupprimer_bis)
-                    {
+                 {
                         
                     ActionsBD dt = new ActionsBD();
                    
@@ -719,32 +732,24 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
                     textBoxAdresse.setText("");
                     comboBoxNaiss.setSelectedIndex(1);
                     comboBoxEmb.setSelectedIndex(1);
-                    textBoxNom.setEditable(false);
-                    textBoxPrénom.setEditable(false);
-                    textBoxRespo.setEditable(false);
-                    textBoxPseudo.setEditable(false);
-                    textBoxHobby.setEditable(false);
-                    textBoxAdresse.setEditable(false);
-                    jour_naissance.setEditable(false);
-                    jour_embauche.setEditable(false);
-                    année_naissance.setEditable(false);
-                    année_embauche.setEditable(false);
-                    comboBoxNaiss.setEditable(false);
-                    comboBoxEmb.setEditable(false);
+                   
                     
                     int truc=dt.supprimerProgrammeurs(textBoxMatricule.getText());
-                    if(truc==0)
+                    System.out.println("truc supprimer : " + truc);
+                    if(truc==0 || truc==-2)
                     {
+                        //ajoutEchec.setVisible(false);
                         suppressionEchec.setVisible(true);
-                        
                         
                     }
                     else
                     {
+                        //ajoutRéussi.setVisible(false);
                         suppressionRéussie.setVisible(true);
+                        
                     }
                     
-                    }
+                  }
                 }
             }
         };
@@ -785,30 +790,6 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Fermeture fenêtre = arrêt de l'application 
         
         }
-        
-        /*this.setVisible(true);
-        JTextArea zoneAffichageProgrammeurs;      
-        zoneAffichageProgrammeurs = new JTextArea(50, 50);
-        JScrollPane scroll= new JScrollPane(zoneAffichageProgrammeurs);   
-        
-        pane.add(scroll);
-        this.setVisible(true);
-        this.setTitle("GesProg");
-        setBounds(10, 10, 600, 300);
-
-        this.add(pane);
-        
-        
-        if (evt.getSource() == itemTout) {
-            ActionsBD dt = new ActionsBD();
-            this.setContentPane(pane);
-            String contenuTextArea;
-            contenuTextArea = dt.afficherProgrammeurs();
-            zoneAffichageProgrammeurs.setText(contenuTextArea);
-            dt.fermerRessources();
-            
-        }
-        */
     }//GEN-LAST:event_itemToutActionPerformed
 
     private void textBoxMatriculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBoxMatriculeActionPerformed
@@ -820,6 +801,18 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         buttonRechercher.setEnabled(true);
         buttonRéinitialiser.setEnabled(true);
          this.setVisible(true);
+         textBoxNom.setEditable(true);
+         textBoxPrénom.setEditable(true);
+         textBoxRespo.setEditable(true);
+         textBoxPseudo.setEditable(true);
+         textBoxHobby.setEditable(true);
+         textBoxAdresse.setEditable(true);
+         jour_naissance.setEditable(true);
+         jour_embauche.setEditable(true);
+        année_naissance.setEditable(true);
+        année_embauche.setEditable(true);
+        comboBoxNaiss.setEditable(true);
+        comboBoxEmb.setEditable(true);
         ActionListener l = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -850,6 +843,18 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         // TODO add your handling code here:
         buttonRechercher.setEnabled(false);
         buttonRéinitialiser.setEnabled(true);
+        textBoxNom.setEditable(true);
+        textBoxPrénom.setEditable(true);
+        textBoxRespo.setEditable(true);
+        textBoxPseudo.setEditable(true);
+        textBoxHobby.setEditable(true);
+        textBoxAdresse.setEditable(true);
+        jour_naissance.setEditable(true);
+        jour_embauche.setEditable(true);
+        année_naissance.setEditable(true);
+        année_embauche.setEditable(true);
+        comboBoxNaiss.setEditable(true);
+        comboBoxEmb.setEditable(true);
         
         ActionListener l;
         l = new ActionListener() {
@@ -866,13 +871,14 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
                         String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
                         String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
                         int truc=dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+                        System.out.println("truc ajout : " + truc);
                         if(truc==1)
                         {
                             ajoutRéussi.setVisible(true);
                             jLabel12.setText("Ajout réussi!");
                             ajoutRéussi.setTitle("Succès");
                         }
-                        else
+                        else if(truc==0 || truc==-1)
                         {
                             ajoutEchec.setVisible(true);
                         }
@@ -892,6 +898,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         
         if(evt.getSource()==buttonQuitterOui)
             {
+                
                 this.dispose();
                 jFrame1.dispose();
                 dialogQuitter.dispose();
@@ -964,8 +971,8 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         année_naissance.setText("");
         année_embauche.setText("");
         textBoxAdresse.setText("");
-        comboBoxNaiss.setSelectedIndex(1);
-        comboBoxEmb.setSelectedIndex(1);
+        comboBoxNaiss.setSelectedIndex(0);
+        comboBoxEmb.setSelectedIndex(0);
         
     }//GEN-LAST:event_buttonRéinitialiserActionPerformed
 

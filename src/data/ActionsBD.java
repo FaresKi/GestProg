@@ -66,7 +66,7 @@ public class ActionsBD {
      * Cette méthode récupère toutes les infos d'un programmeur et retourne une
      * liste de l'ensemble des programmeurs
      *
-     * @return listeProgrammeurs Une variable de type ArryList
+     * @return listeProgrammeurs Une variable de type ArrayList
      */
     public ArrayList getProgrammeurs() {
         rs = this.getResultSet(Constantes.REQUETE_TOUS);
@@ -222,7 +222,10 @@ public class ActionsBD {
         
          ArrayList<String> result= new ArrayList<>();
         result=rechercherProgrammeurs(matricule);
-        
+        if(matricule.length()==0)
+        {
+            return -1;
+        }
         if(!result.isEmpty())
         {
             return 0;
@@ -245,7 +248,7 @@ public class ActionsBD {
         
         
         
-        String requete = "INSERT INTO PROGRAMMEUR (MATRICULE,NOM,PRENOM,ADRESSE,PSEUDO,RESPONSABLE,HOBBY,DATE_NAISS,DATE_EMB) VALUES ("
+        String requete = Constantes.REQUETE_INSERT
                 + matricule + ","
                 + nouveauNom + ","
                 + nouveauPrénom + ","
@@ -272,6 +275,10 @@ public class ActionsBD {
         ArrayList<String> result= new ArrayList<>();
         result=rechercherProgrammeurs(matricule);
         System.out.println("Result size : " + result.size());
+        if(matricule.length()==0)
+        {
+            return -2;
+        }
         
         if(result.isEmpty())
         {
@@ -281,7 +288,7 @@ public class ActionsBD {
         else
         {
         matricule="'"+matricule+"'";
-        String requete  = "DELETE FROM PROGRAMMEUR WHERE MATRICULE = " +matricule;
+        String requete  = Constantes.REQUETE_DELETE +matricule;
        
         
         try{
@@ -301,7 +308,7 @@ public class ActionsBD {
     public ArrayList <String> rechercherProgrammeurs(String matricule)
     {
         matricule="'"+matricule+"'";  
-      String requete  = "SELECT * FROM PROGRAMMEUR WHERE MATRICULE = " + matricule;
+      String requete  = Constantes.REQUETE_UNIQUE + matricule;
       String date_naiss;
       String date_emb;
       String nouveauPrénom;
@@ -318,7 +325,7 @@ public class ActionsBD {
             
                 
             
-            if(rs.next()==true)
+            while(rs.next()==true)
             {
                nouveauPrénom = rs.getString("PRENOM");
                nouveauNom= rs.getString("NOM");
