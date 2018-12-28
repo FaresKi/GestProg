@@ -257,22 +257,23 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         ajoutEchecLayout.setHorizontalGroup(
             ajoutEchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ajoutEchecLayout.createSequentialGroup()
-                .addGap(191, 191, 191)
                 .addGroup(ajoutEchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
                     .addGroup(ajoutEchecLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addGap(187, 187, 187)
+                        .addComponent(jLabel13))
+                    .addGroup(ajoutEchecLayout.createSequentialGroup()
+                        .addGap(197, 197, 197)
                         .addComponent(ajoutEchecOK)))
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         ajoutEchecLayout.setVerticalGroup(
             ajoutEchecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ajoutEchecLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addGap(49, 49, 49)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ajoutEchecOK)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         suppressionRéussie.setTitle("Echec");
@@ -715,7 +716,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
                 {
                     
                     if(evt.getSource()==itemSupprimer || evt.getSource()==itemSupprimer_bis)
-                    {
+                 {
                         
                     ActionsBD dt = new ActionsBD();
                    
@@ -737,16 +738,18 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
                     System.out.println("truc supprimer : " + truc);
                     if(truc==0 || truc==-2)
                     {
+                        //ajoutEchec.setVisible(false);
                         suppressionEchec.setVisible(true);
-                        
                         
                     }
                     else
                     {
+                        //ajoutRéussi.setVisible(false);
                         suppressionRéussie.setVisible(true);
+                        
                     }
                     
-                    }
+                  }
                 }
             }
         };
@@ -787,30 +790,6 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Fermeture fenêtre = arrêt de l'application 
         
         }
-        
-        /*this.setVisible(true);
-        JTextArea zoneAffichageProgrammeurs;      
-        zoneAffichageProgrammeurs = new JTextArea(50, 50);
-        JScrollPane scroll= new JScrollPane(zoneAffichageProgrammeurs);   
-        
-        pane.add(scroll);
-        this.setVisible(true);
-        this.setTitle("GesProg");
-        setBounds(10, 10, 600, 300);
-
-        this.add(pane);
-        
-        
-        if (evt.getSource() == itemTout) {
-            ActionsBD dt = new ActionsBD();
-            this.setContentPane(pane);
-            String contenuTextArea;
-            contenuTextArea = dt.afficherProgrammeurs();
-            zoneAffichageProgrammeurs.setText(contenuTextArea);
-            dt.fermerRessources();
-            
-        }
-        */
     }//GEN-LAST:event_itemToutActionPerformed
 
     private void textBoxMatriculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBoxMatriculeActionPerformed
@@ -992,8 +971,8 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         année_naissance.setText("");
         année_embauche.setText("");
         textBoxAdresse.setText("");
-        comboBoxNaiss.setSelectedIndex(1);
-        comboBoxEmb.setSelectedIndex(1);
+        comboBoxNaiss.setSelectedIndex(0);
+        comboBoxEmb.setSelectedIndex(0);
         
     }//GEN-LAST:event_buttonRéinitialiserActionPerformed
 
