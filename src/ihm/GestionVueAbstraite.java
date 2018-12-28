@@ -31,6 +31,8 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
     public GestionVueAbstraite() {
       
         initComponents();
+        this.setVisible(true);
+        
         
     }
     
@@ -113,6 +115,9 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         menuActions = new javax.swing.JMenu();
         Quitter = new javax.swing.JMenuItem();
 
+        dialogQuitter.setMinimumSize(new java.awt.Dimension(404, 164));
+        dialogQuitter.setResizable(false);
+
         jLabel9.setText("Vérification");
 
         buttonQuitterOui.setText("Oui");
@@ -157,7 +162,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        dialogProgrammeurPasTrouvé.setMinimumSize(new java.awt.Dimension(558, 195));
+        dialogProgrammeurPasTrouvé.setMinimumSize(new java.awt.Dimension(404, 164));
 
         jLabel11.setText("Programmeur introuvable");
 
@@ -194,7 +199,9 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
 
         ajoutRéussi.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         ajoutRéussi.setTitle("Succès");
-        ajoutRéussi.setMinimumSize(new java.awt.Dimension(443, 189));
+        ajoutRéussi.setMinimumSize(new java.awt.Dimension(404, 164));
+        ajoutRéussi.setPreferredSize(new java.awt.Dimension(404, 164));
+        ajoutRéussi.setResizable(false);
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Ajout réussi");
@@ -269,7 +276,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         );
 
         suppressionRéussie.setTitle("Echec");
-        suppressionRéussie.setMinimumSize(new java.awt.Dimension(465, 210));
+        suppressionRéussie.setMinimumSize(new java.awt.Dimension(404, 164));
         suppressionRéussie.setResizable(false);
 
         jLabel14.setText("Suppression réussie ! ");
@@ -300,7 +307,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         );
 
         suppressionEchec.setTitle("Echec");
-        suppressionEchec.setMinimumSize(new java.awt.Dimension(470, 197));
+        suppressionEchec.setMinimumSize(new java.awt.Dimension(404, 164));
         suppressionEchec.setResizable(false);
 
         jLabel15.setText("Suppression échouée");
@@ -330,6 +337,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
                 .addGap(62, 62, 62))
         );
 
+        jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jFrame1.setMinimumSize(new java.awt.Dimension(825, 494));
 
         affichageProgrammeurs.setColumns(20);
@@ -374,6 +382,11 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         menuActions_bis.setText("Action");
 
         Quitter_bis.setText("Quitter");
+        Quitter_bis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Quitter_bisActionPerformed(evt);
+            }
+        });
         menuActions_bis.add(Quitter_bis);
 
         jMenuBar1.add(menuActions_bis);
@@ -680,7 +693,8 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
     }//GEN-LAST:event_année_naissanceActionPerformed
 
     private void itemSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupprimerActionPerformed
-        buttonRechercher.setEnabled(true);
+        buttonRechercher.setEnabled(false);
+        buttonRéinitialiser.setEnabled(false);
         this.setVisible(true);
         ActionListener l = new ActionListener() {
             @Override
@@ -688,10 +702,36 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
                 if(e.getSource()==buttonValider)
                 {
                     
-                    if(evt.getSource()==itemSupprimer)
+                    if(evt.getSource()==itemSupprimer || evt.getSource()==itemSupprimer_bis)
                     {
                         
                     ActionsBD dt = new ActionsBD();
+                   
+                    textBoxNom.setText("");
+                    textBoxPrénom.setText("");
+                    textBoxRespo.setText("");
+                    textBoxPseudo.setText("");
+                    textBoxHobby.setText("");
+                    jour_naissance.setText("");
+                    jour_embauche.setText("");
+                    année_naissance.setText("");
+                    année_embauche.setText("");
+                    textBoxAdresse.setText("");
+                    comboBoxNaiss.setSelectedIndex(1);
+                    comboBoxEmb.setSelectedIndex(1);
+                    textBoxNom.setEditable(false);
+                    textBoxPrénom.setEditable(false);
+                    textBoxRespo.setEditable(false);
+                    textBoxPseudo.setEditable(false);
+                    textBoxHobby.setEditable(false);
+                    textBoxAdresse.setEditable(false);
+                    jour_naissance.setEditable(false);
+                    jour_embauche.setEditable(false);
+                    année_naissance.setEditable(false);
+                    année_embauche.setEditable(false);
+                    comboBoxNaiss.setEditable(false);
+                    comboBoxEmb.setEditable(false);
+                    
                     int truc=dt.supprimerProgrammeurs(textBoxMatricule.getText());
                     if(truc==0)
                     {
@@ -778,6 +818,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
     private void itemModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemModifierActionPerformed
         // TODO add your handling code here:
         buttonRechercher.setEnabled(true);
+        buttonRéinitialiser.setEnabled(true);
          this.setVisible(true);
         ActionListener l = new ActionListener() {
             @Override
@@ -785,7 +826,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
                 if(e.getSource()==buttonValider)
                 {
                     
-                    if(evt.getSource()==itemModifier)
+                    if(evt.getSource()==itemModifier || evt.getSource()==itemModifier_bis)
                     {
                         
                     ActionsBD dt = new ActionsBD();
@@ -808,6 +849,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
             
         // TODO add your handling code here:
         buttonRechercher.setEnabled(false);
+        buttonRéinitialiser.setEnabled(true);
         
         ActionListener l;
         l = new ActionListener() {
@@ -816,7 +858,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
                 if(e.getSource()==buttonValider)
                 {
                     
-                    if(evt.getSource()==menuItemAjouter)
+                    if(evt.getSource()==menuItemAjouter || evt.getSource()==itemAjouter_bis)
                     {
                         
                         
@@ -851,6 +893,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         if(evt.getSource()==buttonQuitterOui)
             {
                 this.dispose();
+                jFrame1.dispose();
                 dialogQuitter.dispose();
             }
           
@@ -946,6 +989,8 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         {
             this.setVisible(true);
             jFrame1.setVisible(false);
+            itemSupprimerActionPerformed(evt);
+            
            // GestionVueAbstraite.setDefaultLookAndFeelDecorated(true);
           
         }
@@ -957,6 +1002,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         {
             this.setVisible(true);
             jFrame1.setVisible(false);
+            itemModifierActionPerformed(evt);
            // GestionVueAbstraite.setDefaultLookAndFeelDecorated(true);
           
         }
@@ -968,6 +1014,8 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         {
             this.setVisible(true);
             jFrame1.setVisible(false);
+            menuItemAjouterActionPerformed(evt);
+            
            // GestionVueAbstraite.setDefaultLookAndFeelDecorated(true);
           
         }
@@ -980,6 +1028,16 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
             jFrame1.dispose();
         }
     }//GEN-LAST:event_ajoutRéussiOKActionPerformed
+
+    private void Quitter_bisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Quitter_bisActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource()==Quitter_bis)
+        {
+            dialogQuitter.setTitle("Voulez-vous vraiment quitter? ");
+            setBounds(10, 10, 600, 300);
+            dialogQuitter.setVisible(true);
+        }
+    }//GEN-LAST:event_Quitter_bisActionPerformed
 
     /**
      * @param args the command line arguments
