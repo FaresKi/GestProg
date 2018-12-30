@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Constantes.Constantes;
-import java.text.SimpleDateFormat;
 
 /**
  *
@@ -29,8 +28,6 @@ public class ActionsBD {
     private ResultSet rs;
     private ArrayList<ProgrammeurBean> listeProgrammeurs;
     private ProgrammeurBean prog;
-   String pattern = "yyyy-MM-dd";
-   SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
     /**
      * Le constructeur permet d'initialiser la connexion
@@ -52,7 +49,7 @@ public class ActionsBD {
      * @param req La requête SQL que l'on souhaite exécuter
      * @return rs Une variable de type ResultSet
      */
-    public ResultSet getResultSet(String req) {
+    private ResultSet getResultSet(String req) {
         try {
             stmt = dbConn.createStatement();
             rs = stmt.executeQuery(req);
@@ -68,7 +65,7 @@ public class ActionsBD {
      *
      * @return listeProgrammeurs Une variable de type ArrayList
      */
-    public ArrayList getProgrammeurs() {
+    private ArrayList getProgrammeurs() {
         rs = this.getResultSet(Constantes.REQUETE_TOUS);
         listeProgrammeurs = new ArrayList<>();
 
@@ -102,7 +99,7 @@ public class ActionsBD {
      * @return prog Une variable de type ProgrammeurBean
      *
      */
-    public ProgrammeurBean getProgrammeur(String nom) {
+    private ProgrammeurBean getProgrammeur(String nom) {
         try {
             pstmt = dbConn.prepareStatement(Constantes.REQUETE_UNIQUE);
             pstmt.setString(1, nom);
@@ -150,7 +147,7 @@ public class ActionsBD {
      * Cette méthode permet de libérer les ressources liées à la base de données
      * *
      */
-    public void fermerRessources() {
+    private void fermerRessources() {
         if (dbConn != null) {
             try {
                 dbConn.close();

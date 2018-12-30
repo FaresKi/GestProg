@@ -23,7 +23,7 @@ import javax.swing.JTextField;
  *
  * @author fkissoum
  */
-public class GestionVueAbstraite extends javax.swing.JFrame {
+abstract class GestionVueAbstraite extends javax.swing.JFrame {
 
     /**
      * Creates new form Vue
@@ -734,9 +734,9 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
                     comboBoxEmb.setSelectedIndex(1);
                    
                     
-                    int truc=dt.supprimerProgrammeurs(textBoxMatricule.getText());
-                    System.out.println("truc supprimer : " + truc);
-                    if(truc==0 || truc==-2)
+                    int taille=dt.supprimerProgrammeurs(textBoxMatricule.getText());
+                    System.out.println("taille supprimer : " + taille);
+                    if(taille==0 || taille==-2)
                     {
                         //ajoutEchec.setVisible(false);
                         suppressionEchec.setVisible(true);
@@ -870,15 +870,15 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
                         ActionsBD dt = new ActionsBD();
                         String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
                         String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
-                        int truc=dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
-                        System.out.println("truc ajout : " + truc);
-                        if(truc==1)
+                        int taille=dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+                        System.out.println("taille ajout : " + taille);
+                        if(taille==1)
                         {
                             ajoutRéussi.setVisible(true);
                             jLabel12.setText("Ajout réussi!");
                             ajoutRéussi.setTitle("Succès");
                         }
-                        else if(truc==0 || truc==-1)
+                        else if(taille==0 || taille==-1)
                         {
                             ajoutEchec.setVisible(true);
                         }
@@ -1078,7 +1078,7 @@ public class GestionVueAbstraite extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new GestionVueAbstraite().setVisible(true);
+                
             }
         });
     }
