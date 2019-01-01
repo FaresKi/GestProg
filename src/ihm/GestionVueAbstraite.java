@@ -5,23 +5,15 @@
  */
 package ihm;
 
-import data.ActionsBD;
+import data.DataTransac;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.ArrayList;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 /**
  *
- * @author fkissoum
+ * @author Fares
  */
 abstract class GestionVueAbstraite extends javax.swing.JFrame {
 
@@ -341,6 +333,7 @@ abstract class GestionVueAbstraite extends javax.swing.JFrame {
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jFrame1.setMinimumSize(new java.awt.Dimension(825, 494));
 
+        affichageProgrammeurs.setEditable(false);
         affichageProgrammeurs.setColumns(20);
         affichageProgrammeurs.setRows(5);
         jScrollPane1.setViewportView(affichageProgrammeurs);
@@ -673,6 +666,7 @@ abstract class GestionVueAbstraite extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
         
@@ -694,21 +688,25 @@ abstract class GestionVueAbstraite extends javax.swing.JFrame {
     }//GEN-LAST:event_année_naissanceActionPerformed
 
     private void itemSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSupprimerActionPerformed
-        buttonRechercher.setEnabled(false);
-        buttonRéinitialiser.setEnabled(false);
-        textBoxNom.setEditable(false);
-        textBoxPrénom.setEditable(false);
-        textBoxRespo.setEditable(false);
-        textBoxPseudo.setEditable(false);
-        textBoxHobby.setEditable(false);
-        textBoxAdresse.setEditable(false);
-        jour_naissance.setEditable(false);
-        jour_embauche.setEditable(false);
-        année_naissance.setEditable(false);
-        année_embauche.setEditable(false);
-        comboBoxNaiss.setEditable(false);
-        comboBoxEmb.setEditable(false);
-        this.setVisible(true);
+       
+        {
+                buttonRechercher.setEnabled(false);
+                buttonRéinitialiser.setEnabled(false);
+                textBoxNom.setEditable(false);
+                textBoxPrénom.setEditable(false);
+                textBoxRespo.setEditable(false);
+                textBoxPseudo.setEditable(false);
+                textBoxHobby.setEditable(false);
+                textBoxAdresse.setEditable(false);
+                jour_naissance.setEditable(false);
+                jour_embauche.setEditable(false);
+                année_naissance.setEditable(false);
+                année_embauche.setEditable(false);
+                comboBoxNaiss.setEditable(false);
+                comboBoxEmb.setEditable(false);
+                this.setVisible(true);
+        }
+        
         ActionListener l = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -718,7 +716,7 @@ abstract class GestionVueAbstraite extends javax.swing.JFrame {
                     if(evt.getSource()==itemSupprimer || evt.getSource()==itemSupprimer_bis)
                  {
                         
-                    ActionsBD dt = new ActionsBD();
+                    DataTransac dt = new DataTransac();
                    
                     textBoxNom.setText("");
                     textBoxPrénom.setText("");
@@ -785,7 +783,7 @@ abstract class GestionVueAbstraite extends javax.swing.JFrame {
         jFrame1.setTitle("GestProg");
         this.setVisible(false);
         jFrame1.setVisible(true);
-        ActionsBD dt = new ActionsBD();
+        DataTransac dt = new DataTransac();
         affichageProgrammeurs.setText(dt.afficherProgrammeurs());
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Fermeture fenêtre = arrêt de l'application 
         
@@ -822,7 +820,7 @@ abstract class GestionVueAbstraite extends javax.swing.JFrame {
                     if(evt.getSource()==itemModifier || evt.getSource()==itemModifier_bis)
                     {
                         
-                    ActionsBD dt = new ActionsBD();
+                    DataTransac dt = new DataTransac();
                     String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
                     String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
                     dt.modifierProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
@@ -867,7 +865,7 @@ abstract class GestionVueAbstraite extends javax.swing.JFrame {
                     {
                         
                         
-                        ActionsBD dt = new ActionsBD();
+                        DataTransac dt = new DataTransac();
                         String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
                         String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
                         int taille=dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
@@ -921,7 +919,7 @@ abstract class GestionVueAbstraite extends javax.swing.JFrame {
         
         if(evt.getSource()==buttonRechercher)
         {
-            ActionsBD dt = new ActionsBD();
+            DataTransac dt = new DataTransac();
             ArrayList <String> result=new ArrayList <String> ();
             
            result=dt.rechercherProgrammeurs(textBoxMatricule.getText());
