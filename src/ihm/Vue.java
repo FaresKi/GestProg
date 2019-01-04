@@ -6,7 +6,6 @@
 package ihm;
 
 import data.DataTransac;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -705,15 +704,13 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                 this.setVisible(true);
         
         
-        ActionListener l = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==buttonValider)
+        ActionListener l = (ActionEvent e) -> {
+            if(e.getSource()==buttonValider)
+            {
+                
+                if(evt.getSource()==itemSupprimer || evt.getSource()==itemSupprimer_bis)
                 {
                     
-                    if(evt.getSource()==itemSupprimer || evt.getSource()==itemSupprimer_bis)
-                 {
-                        
                     DataTransac dt = new DataTransac();
                    
                     textBoxNom.setText("");
@@ -728,7 +725,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                     textBoxAdresse.setText("");
                     comboBoxNaiss.setSelectedIndex(1);
                     comboBoxEmb.setSelectedIndex(1);
-                   
+                    
                     
                     int taille=dt.supprimerProgrammeurs(textBoxMatricule.getText());
                     System.out.println("taille supprimer : " + taille);
@@ -745,10 +742,9 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                         
                     }
                     
-                  }
                 }
             }
-        };
+                };
         
         buttonValider.addActionListener(l);
     
@@ -812,20 +808,17 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         année_embauche.setEditable(true);
         comboBoxNaiss.setEditable(true);
         comboBoxEmb.setEditable(true);
-        ActionListener l = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==buttonValider)
+        ActionListener l = (ActionEvent e) -> {
+            if(e.getSource()==buttonValider)
+            {
+                
+                if(evt.getSource()==itemModifier || evt.getSource()==itemModifier_bis)
                 {
                     
-                    if(evt.getSource()==itemModifier || evt.getSource()==itemModifier_bis)
-                    {
-                        
                     DataTransac dt = new DataTransac();
                     String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
                     String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
                     dt.modifierProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
-                    }
                 }
             }
         };
@@ -856,33 +849,30 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         comboBoxEmb.setEditable(true);
         
         ActionListener l;
-        l = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==buttonValider)
+        l = (ActionEvent e) -> {
+            if(e.getSource()==buttonValider)
+            {
+                
+                if(evt.getSource()==menuItemAjouter || evt.getSource()==itemAjouter_bis)
                 {
                     
-                    if(evt.getSource()==menuItemAjouter || evt.getSource()==itemAjouter_bis)
+
+                    DataTransac dt = new DataTransac();
+                    String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
+                    String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
+                    int taille=dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+                    System.out.println("taille ajout : " + taille);
+                    if(taille==1)
                     {
-                        
-                        
-                        DataTransac dt = new DataTransac();
-                        String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
-                        String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
-                        int taille=dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
-                        System.out.println("taille ajout : " + taille);
-                        if(taille==1)
-                        {
-                            ajoutRéussi.setVisible(true);
-                            jLabel12.setText("Ajout réussi!");
-                            ajoutRéussi.setTitle("Succès");
-                        }
-                        else if(taille==0 || taille==-1)
-                        {
-                            ajoutEchec.setVisible(true);
-                        }
-                        
+                        ajoutRéussi.setVisible(true);
+                        jLabel12.setText("Ajout réussi!");
+                        ajoutRéussi.setTitle("Succès");
                     }
+                    else if(taille==0 || taille==-1)
+                    {
+                        ajoutEchec.setVisible(true);
+                    }
+                    
                 }
             }
         };
@@ -922,10 +912,10 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         if(evt.getSource()==buttonRechercher)
         {
             DataTransac dt = new DataTransac();
-            ArrayList <String> result=new ArrayList <String> ();
+            ArrayList <String> result=new ArrayList <> ();
             
            result=dt.rechercherProgrammeurs(textBoxMatricule.getText());
-           if(result.size()==0)
+           if(result.isEmpty())
            {
                dialogProgrammeurPasTrouvé.setTitle("Erreur");
                dialogProgrammeurPasTrouvé.setVisible(true);
@@ -1168,6 +1158,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
     public void afficherProgrammeurs() {
         itemToutActionPerformed(evt);
     }
+
 
     @Override
     public void supprimerProgrammeurs() {
