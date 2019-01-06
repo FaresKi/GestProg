@@ -345,6 +345,9 @@
           <Dimension value="[825, 494]"/>
         </Property>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -447,11 +450,6 @@
         </Menu>
       </SubComponents>
     </Container>
-    <Component class="java.awt.Checkbox" name="checkbox1">
-      <Properties>
-        <Property name="label" type="java.lang.String" value="checkbox1"/>
-      </Properties>
-    </Component>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuProgrammeur">

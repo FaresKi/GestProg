@@ -101,31 +101,8 @@ public class DataTransac implements ActionsBD {
      * @return prog Une variable de type ProgrammeurBean
      *
      */
-    @Override
-    public ProgrammeurBean getProgrammeur(String nom) {
-        try {
-            pstmt = dbConn.prepareStatement(Constantes.REQUETE_UNIQUE);
-            pstmt.setString(1, nom);
-            rs = pstmt.executeQuery();
 
-            while (rs.next()) {
-                prog = new ProgrammeurBean();
-                  prog = new ProgrammeurBean();
-                 prog.setMatricule(rs.getInt("MATRICULE"));
-                prog.setPrenom(rs.getString("PRENOM"));
-                prog.setNom(rs.getString("NOM"));
-                prog.setAnNaissance(rs.getString("DATE_NAISS"));
-                prog.setAnEmbauche(rs.getString("DATE_EMB"));
-                prog.setHobby(rs.getString("HOBBY"));
-                prog.setResponsable(rs.getString("RESPONSABLE"));
-                prog.setPseudo(rs.getString("PSEUDO"));
-                listeProgrammeurs.add(prog);
-            }
-        } catch (SQLException sqle) {
-            Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
-        }
-        return prog;
-    }
+   
 
     /**
      * Cette méthode permet de construire la chaîne de caractères qui sera
@@ -232,7 +209,7 @@ public class DataTransac implements ActionsBD {
         }
         if(!result.isEmpty())
         {
-            return 0;
+            return -1;
         }
         
         
@@ -287,7 +264,7 @@ public class DataTransac implements ActionsBD {
         
         if(result.isEmpty())
         {
-            return 0;
+            return -2;
         }
         
         else
@@ -303,7 +280,7 @@ public class DataTransac implements ActionsBD {
             Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
         }
         
-            return 1;
+            return 2;
         }
         
         
@@ -370,6 +347,11 @@ public class DataTransac implements ActionsBD {
         }
         return result;
     }     
+
+    @Override
+    public ProgrammeurBean getProgrammeur(String nom) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
       
 
 }

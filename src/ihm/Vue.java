@@ -68,7 +68,6 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         itemAjouter_bis = new javax.swing.JMenuItem();
         menuActions_bis = new javax.swing.JMenu();
         Quitter_bis = new javax.swing.JMenuItem();
-        checkbox1 = new java.awt.Checkbox();
         jLabel1 = new javax.swing.JLabel();
         textBoxNom = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -402,7 +401,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                 .addContainerGap(97, Short.MAX_VALUE))
         );
 
-        checkbox1.setLabel("checkbox1");
+        jFrame1.getAccessibleContext().setAccessibleDescription("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GestProg");
@@ -729,15 +728,15 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                     
                     int taille=dt.supprimerProgrammeurs(textBoxMatricule.getText());
                     System.out.println("taille supprimer : " + taille);
-                    if(taille==0 || taille==-2)
+                    if(taille==-2)
                     {
-                        //ajoutEchec.setVisible(false);
+                        ajoutEchec.setVisible(false);
                         suppressionEchec.setVisible(true);
                         
                     }
-                    else
+                    else if (taille==2)
                     {
-                        //ajoutRéussi.setVisible(false);
+                        ajoutRéussi.setVisible(false);
                         suppressionRéussie.setVisible(true);
                         
                     }
@@ -778,6 +777,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         if(evt.getSource()== itemTout)
         {
         jFrame1.setTitle("GestProg");
+        jFrame1.setLocationRelativeTo(null);
         this.setVisible(false);
         jFrame1.setVisible(true);
         DataTransac dt = new DataTransac();
@@ -819,6 +819,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                     String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
                     String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
                     dt.modifierProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+                    ajoutEchec.setVisible(false);
                 }
             }
         };
@@ -868,7 +869,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                         jLabel12.setText("Ajout réussi!");
                         ajoutRéussi.setTitle("Succès");
                     }
-                    else if(taille==0 || taille==-1)
+                    else if(taille==-1)
                     {
                         ajoutEchec.setVisible(true);
                     }
@@ -1093,7 +1094,6 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
     private javax.swing.JButton buttonRechercher;
     private javax.swing.JButton buttonRéinitialiser;
     private javax.swing.JButton buttonValider;
-    private java.awt.Checkbox checkbox1;
     private javax.swing.JComboBox<String> comboBoxEmb;
     private javax.swing.JComboBox<String> comboBoxNaiss;
     private javax.swing.JDialog dialogProgrammeurPasTrouvé;
