@@ -13,7 +13,8 @@ package ihm;
 public class Start {
     public static void main(String[] args) {
        
-        Vue ihm = new Vue() {};
+        Vue ihm = new Vue();
+        
         
         
         
