@@ -74,13 +74,13 @@ public class DataTransac implements ActionsBD {
         return listeProg;
     }
 
+    @Override
     public int ajouterProgrammeurs(String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo,
                                    String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb,
                                    String adresse) {
         int matricule = 0;
 
         {
-            listeProgrammeurs = this.getProgrammeurs();
             nouveauNom        = "'" + nouveauNom + "'";
             nouveauPrénom     = "'" + nouveauPrénom + "'";
             nouveauHobby      = "'" + nouveauHobby + "'";
@@ -217,18 +217,18 @@ public class DataTransac implements ActionsBD {
                 jour_naiss    = date_naiss.substring(8);
                 mois_naiss    = date_naiss.substring(6, 7);
                 mois_emb      = date_emb.substring(6, 7);
-                result.add(nouveauNom);       // O
-                result.add(nouveauPrénom);    // 1
-                result.add(adresse);          // 2
-                result.add(nouveauPseudo);    // 3
-                result.add(nouveauRespo);     // 4
-                result.add(nouveauHobby);     // 5
-                result.add(jour_naiss);       // 6
-                result.add(mois_naiss);       // 7
-                result.add(ann_naiss);        // 8
-                result.add(jour_emb);         // 9
-                result.add(mois_emb);         // 10
-                result.add(ann_emb);          // 11
+                result.add(nouveauNom);       
+                result.add(nouveauPrénom);   
+                result.add(adresse);          
+                result.add(nouveauPseudo);    
+                result.add(nouveauRespo);     
+                result.add(nouveauHobby);     
+                result.add(jour_naiss);      
+                result.add(mois_naiss);       
+                result.add(ann_naiss);        
+                result.add(jour_emb);         
+                result.add(mois_emb);        
+                result.add(ann_emb);          
             }
         } catch (SQLException sqle) {
             Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);

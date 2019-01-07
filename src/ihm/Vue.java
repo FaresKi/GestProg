@@ -730,13 +730,11 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                     System.out.println("taille supprimer : " + taille);
                     if(taille==-2)
                     {
-                        ajoutEchec.setVisible(false);
                         suppressionEchec.setVisible(true);
                         
                     }
                     else if (taille==2)
                     {
-                        ajoutRéussi.setVisible(false);
                         suppressionRéussie.setVisible(true);
                         
                     }
@@ -795,15 +793,15 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         // TODO add your handling code here:
         buttonRechercher.setEnabled(true);
         buttonRéinitialiser.setEnabled(true);
-         this.setVisible(true);
-         textBoxNom.setEditable(true);
-         textBoxPrénom.setEditable(true);
-         textBoxRespo.setEditable(true);
-         textBoxPseudo.setEditable(true);
-         textBoxHobby.setEditable(true);
-         textBoxAdresse.setEditable(true);
-         jour_naissance.setEditable(true);
-         jour_embauche.setEditable(true);
+        this.setVisible(true);
+        textBoxNom.setEditable(true);
+        textBoxPrénom.setEditable(true);
+        textBoxRespo.setEditable(true);
+        textBoxPseudo.setEditable(true);
+        textBoxHobby.setEditable(true);
+        textBoxAdresse.setEditable(true);
+        jour_naissance.setEditable(true);
+        jour_embauche.setEditable(true);
         année_naissance.setEditable(true);
         année_embauche.setEditable(true);
         comboBoxNaiss.setEditable(true);
@@ -1020,7 +1018,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         // TODO add your handling code here:
         if(evt.getSource()==ajoutRéussiOK)
         {
-            jFrame1.dispose();
+            ajoutRéussi.setVisible(false);
         }
     }//GEN-LAST:event_ajoutRéussiOKActionPerformed
 
@@ -1066,11 +1064,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                
-            }
+        java.awt.EventQueue.invokeLater(() -> {
         });
     }
 
