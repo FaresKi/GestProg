@@ -861,18 +861,15 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                     DataTransac dt = new DataTransac();
                     String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
                     String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
-                    int taille=dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
-                    System.out.println("taille ajout : " + taille);
-                    if(taille==1)
-                    {
-                        ajoutRéussi.setVisible(true);
-                        jLabel12.setText("Ajout réussi!");
-                        ajoutRéussi.setTitle("Succès");
-                    }
-                    else if(taille==-1)
-                    {
-                        ajoutEchec.setVisible(true);
-                    }
+                    int matricule=dt.ajouterProgrammeurs(textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+                    textBoxMatricule.setText(Integer.toString(matricule));
+                    
+                        
+                    ajoutRéussi.setVisible(true);
+                    jLabel12.setText("Ajout réussi!");
+                    ajoutRéussi.setTitle("Succès");
+
+
                     
                 }
             }
