@@ -17,4 +17,5 @@ public abstract class GestionVueAbstraite extends javax.swing.JFrame {
     abstract public void modifierProgrammeurs();
     
     
+    
 }

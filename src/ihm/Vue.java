@@ -6,7 +6,6 @@
 package ihm;
 
 import data.DataTransac;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -69,7 +68,6 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         itemAjouter_bis = new javax.swing.JMenuItem();
         menuActions_bis = new javax.swing.JMenu();
         Quitter_bis = new javax.swing.JMenuItem();
-        checkbox1 = new java.awt.Checkbox();
         jLabel1 = new javax.swing.JLabel();
         textBoxNom = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -403,7 +401,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                 .addContainerGap(97, Short.MAX_VALUE))
         );
 
-        checkbox1.setLabel("checkbox1");
+        jFrame1.getAccessibleContext().setAccessibleDescription("");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GestProg");
@@ -705,15 +703,13 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                 this.setVisible(true);
         
         
-        ActionListener l = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==buttonValider)
+        ActionListener l = (ActionEvent e) -> {
+            if(e.getSource()==buttonValider)
+            {
+                
+                if(evt.getSource()==itemSupprimer || evt.getSource()==itemSupprimer_bis)
                 {
                     
-                    if(evt.getSource()==itemSupprimer || evt.getSource()==itemSupprimer_bis)
-                 {
-                        
                     DataTransac dt = new DataTransac();
                    
                     textBoxNom.setText("");
@@ -728,27 +724,24 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                     textBoxAdresse.setText("");
                     comboBoxNaiss.setSelectedIndex(1);
                     comboBoxEmb.setSelectedIndex(1);
-                   
+                    
                     
                     int taille=dt.supprimerProgrammeurs(textBoxMatricule.getText());
                     System.out.println("taille supprimer : " + taille);
-                    if(taille==0 || taille==-2)
+                    if(taille==-2)
                     {
-                        //ajoutEchec.setVisible(false);
                         suppressionEchec.setVisible(true);
                         
                     }
-                    else
+                    else if (taille==2)
                     {
-                        //ajoutRéussi.setVisible(false);
                         suppressionRéussie.setVisible(true);
                         
                     }
                     
-                  }
                 }
             }
-        };
+                };
         
         buttonValider.addActionListener(l);
     
@@ -782,6 +775,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         if(evt.getSource()== itemTout)
         {
         jFrame1.setTitle("GestProg");
+        jFrame1.setLocationRelativeTo(null);
         this.setVisible(false);
         jFrame1.setVisible(true);
         DataTransac dt = new DataTransac();
@@ -799,33 +793,31 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         // TODO add your handling code here:
         buttonRechercher.setEnabled(true);
         buttonRéinitialiser.setEnabled(true);
-         this.setVisible(true);
-         textBoxNom.setEditable(true);
-         textBoxPrénom.setEditable(true);
-         textBoxRespo.setEditable(true);
-         textBoxPseudo.setEditable(true);
-         textBoxHobby.setEditable(true);
-         textBoxAdresse.setEditable(true);
-         jour_naissance.setEditable(true);
-         jour_embauche.setEditable(true);
+        this.setVisible(true);
+        textBoxNom.setEditable(true);
+        textBoxPrénom.setEditable(true);
+        textBoxRespo.setEditable(true);
+        textBoxPseudo.setEditable(true);
+        textBoxHobby.setEditable(true);
+        textBoxAdresse.setEditable(true);
+        jour_naissance.setEditable(true);
+        jour_embauche.setEditable(true);
         année_naissance.setEditable(true);
         année_embauche.setEditable(true);
         comboBoxNaiss.setEditable(true);
         comboBoxEmb.setEditable(true);
-        ActionListener l = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==buttonValider)
+        ActionListener l = (ActionEvent e) -> {
+            if(e.getSource()==buttonValider)
+            {
+                
+                if(evt.getSource()==itemModifier || evt.getSource()==itemModifier_bis)
                 {
                     
-                    if(evt.getSource()==itemModifier || evt.getSource()==itemModifier_bis)
-                    {
-                        
                     DataTransac dt = new DataTransac();
                     String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
                     String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
                     dt.modifierProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
-                    }
+                    ajoutEchec.setVisible(false);
                 }
             }
         };
@@ -856,33 +848,27 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         comboBoxEmb.setEditable(true);
         
         ActionListener l;
-        l = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==buttonValider)
+        l = (ActionEvent e) -> {
+            if(e.getSource()==buttonValider)
+            {
+                
+                if(evt.getSource()==menuItemAjouter || evt.getSource()==itemAjouter_bis)
                 {
                     
-                    if(evt.getSource()==menuItemAjouter || evt.getSource()==itemAjouter_bis)
-                    {
+
+                    DataTransac dt = new DataTransac();
+                    String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
+                    String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
+                    int matricule=dt.ajouterProgrammeurs(textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+                    textBoxMatricule.setText(Integer.toString(matricule));
+                    
                         
-                        
-                        DataTransac dt = new DataTransac();
-                        String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
-                        String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
-                        int taille=dt.ajouterProgrammeurs(textBoxMatricule.getText(), textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
-                        System.out.println("taille ajout : " + taille);
-                        if(taille==1)
-                        {
-                            ajoutRéussi.setVisible(true);
-                            jLabel12.setText("Ajout réussi!");
-                            ajoutRéussi.setTitle("Succès");
-                        }
-                        else if(taille==0 || taille==-1)
-                        {
-                            ajoutEchec.setVisible(true);
-                        }
-                        
-                    }
+                    ajoutRéussi.setVisible(true);
+                    jLabel12.setText("Ajout réussi!");
+                    ajoutRéussi.setTitle("Succès");
+
+
+                    
                 }
             }
         };
@@ -922,10 +908,10 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         if(evt.getSource()==buttonRechercher)
         {
             DataTransac dt = new DataTransac();
-            ArrayList <String> result=new ArrayList <String> ();
+            ArrayList <String> result=new ArrayList <> ();
             
            result=dt.rechercherProgrammeurs(textBoxMatricule.getText());
-           if(result.size()==0)
+           if(result.isEmpty())
            {
                dialogProgrammeurPasTrouvé.setTitle("Erreur");
                dialogProgrammeurPasTrouvé.setVisible(true);
@@ -1032,7 +1018,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         // TODO add your handling code here:
         if(evt.getSource()==ajoutRéussiOK)
         {
-            jFrame1.dispose();
+            ajoutRéussi.setVisible(false);
         }
     }//GEN-LAST:event_ajoutRéussiOKActionPerformed
 
@@ -1078,11 +1064,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                
-            }
+        java.awt.EventQueue.invokeLater(() -> {
         });
     }
 
@@ -1103,7 +1085,6 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
     private javax.swing.JButton buttonRechercher;
     private javax.swing.JButton buttonRéinitialiser;
     private javax.swing.JButton buttonValider;
-    private java.awt.Checkbox checkbox1;
     private javax.swing.JComboBox<String> comboBoxEmb;
     private javax.swing.JComboBox<String> comboBoxNaiss;
     private javax.swing.JDialog dialogProgrammeurPasTrouvé;
@@ -1168,6 +1149,7 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
     public void afficherProgrammeurs() {
         itemToutActionPerformed(evt);
     }
+
 
     @Override
     public void supprimerProgrammeurs() {
