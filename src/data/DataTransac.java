@@ -74,11 +74,26 @@ public class DataTransac implements ActionsBD {
         return listeProg;
     }
 
+    public String generateurMatricule() 
+    {
+        int matricule = 0;
+        try
+        {
+            rs = this.getResultSet(Constantes.GET_MAX);
+            while(rs.next())
+            {
+                matricule = rs.getInt("1") + 1;
+            }
+        }catch (SQLException sqle) {
+                Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
+        
+    }
+        return Integer.toString(matricule);
+    }
     @Override
-    public int ajouterProgrammeurs(String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo,
+    public void ajouterProgrammeurs(String matricule, String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo,
                                    String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb,
                                    String adresse) {
-        int matricule = 0;
 
         {
             nouveauNom        = "'" + nouveauNom + "'";
@@ -94,14 +109,9 @@ public class DataTransac implements ActionsBD {
                 rs = this.getResultSet(Constantes.GET_MAX);
 
                 while (rs.next()) {
-                    matricule = rs.getInt("1") + 1;
+                    matricule = "'" + matricule + "'";
 
-                    String mat = Integer.toString(matricule);
-
-                    System.out.println(mat);
-                    mat = "'" + mat + "'";
-
-                    String requete = Constantes.REQUETE_INSERT + mat + "," + nouveauNom + "," + nouveauPrénom + ","
+                    String requete = Constantes.REQUETE_INSERT + matricule + "," + nouveauNom + "," + nouveauPrénom + ","
                                      + adresse + "," + nouveauPseudo + "," + nouveauRespo + "," + nouveauHobby + ","
                                      + nouvelleDateNaiss + "," + nouvelleDateEmb + ")";
 
@@ -116,8 +126,6 @@ public class DataTransac implements ActionsBD {
                 Logger.getLogger(DataTransac.class.getName()).log(Level.SEVERE, null, sqle);
             }
         }
-
-        return matricule;
     }
 
     /**
@@ -266,10 +274,6 @@ public class DataTransac implements ActionsBD {
         }
     }
 
-    @Override
-    public ProgrammeurBean getProgrammeur(String nom) {
-        throw new UnsupportedOperationException("Not supported yet.");    // To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      * Cette méthode récupère toutes les infos d'un programmeur et retourne une
