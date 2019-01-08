@@ -830,8 +830,6 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
     
     private void menuItemAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAjouterActionPerformed
       
-            
-        // TODO add your handling code here:
         buttonRechercher.setEnabled(false);
         buttonRéinitialiser.setEnabled(true);
         textBoxNom.setEditable(true);
@@ -846,6 +844,8 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
         année_embauche.setEditable(true);
         comboBoxNaiss.setEditable(true);
         comboBoxEmb.setEditable(true);
+        DataTransac dt = new DataTransac();
+        textBoxMatricule.setText(dt.generateurMatricule());
         
         ActionListener l;
         l = (ActionEvent e) -> {
@@ -856,13 +856,12 @@ public class Vue extends GestionVueAbstraite implements ActionListener{
                 {
                     
 
-                    DataTransac dt = new DataTransac();
+                    
                     String nouvelleDateNaiss = année_naissance.getText() +"-"+ comboBoxNaiss.getSelectedItem()+"-"+jour_naissance.getText();
                     String nouvelleDateEmb = année_embauche.getText()+"-"+comboBoxEmb.getSelectedItem()+"-"+jour_embauche.getText();
-                    int matricule=dt.ajouterProgrammeurs(textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
-                    textBoxMatricule.setText(Integer.toString(matricule));
                     
-                        
+                    dt.ajouterProgrammeurs(textBoxMatricule.getText(),textBoxNom.getText(), textBoxPrénom.getText(), textBoxHobby.getText(), textBoxRespo.getText(), textBoxPseudo.getText(), nouvelleDateNaiss, nouvelleDateEmb, textBoxAdresse.getText());
+                    
                     ajoutRéussi.setVisible(true);
                     jLabel12.setText("Ajout réussi!");
                     ajoutRéussi.setTitle("Succès");

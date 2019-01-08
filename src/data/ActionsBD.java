@@ -16,11 +16,10 @@ public interface ActionsBD {
     
     ResultSet getResultSet(String req);
     ArrayList getProgrammeurs();
-    ProgrammeurBean getProgrammeur(String nom);
     String afficherProgrammeurs() ;
     void fermerRessources();
     public int modifierProgrammeurs(String matricule, String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo, String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb, String nouvelleAdresse );
-    public int ajouterProgrammeurs(String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo, String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb, String adresse);
+    public void ajouterProgrammeurs(String matricule, String nouveauNom, String nouveauPrénom, String nouveauHobby, String nouveauRespo, String nouveauPseudo, String nouvelleDateNaiss, String nouvelleDateEmb, String adresse);
     public int supprimerProgrammeurs(String matricule);
     public ArrayList <String> rechercherProgrammeurs(String matricule);
     
